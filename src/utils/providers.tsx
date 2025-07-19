@@ -13,7 +13,9 @@ export const Providers = ({ children }: PropsWithChildren) => {
       defaultTheme="light" 
       disableTransitionOnChange
     >
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        
+        {children}</QueryClientProvider>
     </ThemeProvider>
   );
 };

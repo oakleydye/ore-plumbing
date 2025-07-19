@@ -4,12 +4,13 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
 
-// Example images (replace with your own or use Unsplash)
 const images = ["/images/hero1.webp", "/images/hero2.webp", "/images/hero3.webp"];
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const routes = useRouter();
 
   // Slideshow effect
   useEffect(() => {
@@ -52,6 +53,9 @@ export default function Hero() {
         <Button
           size="lg"
           className="text-lg px-8 py-4 rounded-full shadow-lg transition"
+          onClick={() => {
+            routes.push("/contact");
+          }}
         >
           Request a Free Estimate
         </Button>

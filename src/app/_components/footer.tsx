@@ -30,12 +30,12 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="text-md font-semibold text-foreground">Services</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Emergency Repairs</a></li>
-              <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Drain Cleaning</a></li>
-              <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Water Heater Service</a></li>
-              <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Pipe Installation</a></li>
-              <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Bathroom Remodeling</a></li>
-              <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Commercial Plumbing</a></li>
+              <li><a href="/services/residential-new-install" className="text-muted-foreground hover:text-primary transition-colors">New Installation</a></li>
+              <li><a href="/services/commercial" className="text-muted-foreground hover:text-primary transition-colors">Commercial Plumbing</a></li>
+              <li><a href="/services/bathroom-remodeling" className="text-muted-foreground hover:text-primary transition-colors">Bathroom Remodeling</a></li>
+              <li><a href="/services/water-softeners" className="text-muted-foreground hover:text-primary transition-colors">Water Softeners</a></li>
+              <li><a href="/services/water-heater" className="text-muted-foreground hover:text-primary transition-colors">Water Heater Service</a></li>
+              <li><a href="/services/emergency-repairs" className="text-muted-foreground hover:text-primary transition-colors">Emergency Repairs</a></li>
             </ul>
           </div>
 
@@ -78,7 +78,7 @@ export default function Footer() {
               <li><a href="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</a></li>
               <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</a></li>
               <li><a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a></li>
-              <li><a href="/emergency" className="text-muted-foreground hover:text-primary transition-colors">Emergency Service</a></li>
+              <li><a href="/services/emergency-repairs" className="text-muted-foreground hover:text-primary transition-colors">Emergency Service</a></li>
               <li><a href="/reviews" className="text-muted-foreground hover:text-primary transition-colors">Customer Reviews</a></li>
             </ul>
           </div>

@@ -117,10 +117,12 @@ export default function AboutPage() {
                 exceptional service to residential and commercial customers throughout Northern Utah.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Call (435) 890-3316
-                </Button>
+                <a href="tel:4358903316">
+                  <Button size="lg">
+                    <Phone className="w-4 h-4 mr-2" />
+                    Call (435) 890-3316
+                  </Button>
+                </a>
                 <Link href="/services">
                   <Button size="lg" variant="outline">
                     <Wrench className="w-4 h-4 mr-2" />
@@ -361,10 +363,12 @@ export default function AboutPage() {
             Contact us today for reliable, professional plumbing services you can trust.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
-              <Phone className="w-4 h-4 mr-2" />
-              Call (435) 890-3316
-            </Button>
+            <a href="tel:4358903316">
+              <Button size="lg" className="bg-white text-primary hover:bg-gray-100">
+                <Phone className="w-4 h-4 mr-2" />
+                Call (435) 890-3316
+              </Button>
+            </a>
             <Link href="/services">
               <Button size="lg" variant="outline" className="border-white text-accent hover:bg-white hover:text-primary">
                 <Star className="w-4 h-4 mr-2" />
