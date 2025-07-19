@@ -37,7 +37,7 @@ export default function Hero() {
           />
         ))}
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-background/60" />
+        <div className="absolute inset-0 bg-background/50" />
       </div>
 
       {/* Content */}
@@ -58,38 +58,18 @@ export default function Hero() {
         {/* Optional: Add a phone CTA below button */}
         <a
           href="tel:4358903316"
-          className="mt-6 text-accent-foreground hover:text-foreground underline text-base transition-colors"
+          className="mt-6 text-accent-background hover:text-accent underline text-base transition-colors"
         >
           Or call us now: (435) 890-3316
         </a>
       </div>
 
       {/* Decorative bubbles */}
-      <div className="absolute bottom-0 left-0 w-full flex justify-center pointer-events-none z-0">
-        <div className="w-32 h-32 bg-primary/20 rounded-full blur-2xl animate-bounce-slow" />
-        <div className="w-16 h-16 bg-accent/15 rounded-full blur-xl ml-[-40px] animate-bounce-slower" />
-        <div className="w-24 h-24 bg-primary/10 rounded-full blur-lg ml-[-20px] animate-bounce-slowest" />
+      <div className="absolute bottom-10 left-0 w-full flex justify-center pointer-events-none z-[1]">
+        <div className="w-32 h-32 bg-primary/30 rounded-full blur-2xl animate-bounce-slow" />
+        <div className="w-16 h-16 bg-accent/25 rounded-full blur-xl ml-[-40px] animate-bounce-slower" />
+        <div className="w-24 h-24 bg-primary/20 rounded-full blur-lg ml-[-20px] animate-bounce-slowest" />
       </div>
-      <style jsx global>{`
-        @keyframes bounce-slow {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-        .animate-bounce-slow {
-          animation: bounce-slow 5s infinite;
-        }
-        .animate-bounce-slower {
-          animation: bounce-slow 7s infinite;
-        }
-        .animate-bounce-slowest {
-          animation: bounce-slow 9s infinite;
-        }
-      `}</style>
     </section>
   );
 }

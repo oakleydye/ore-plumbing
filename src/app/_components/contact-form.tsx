@@ -150,7 +150,7 @@ export default function ContactForm({
         )}
 
         {/* Contact Form */}
-        <div className={showContactInfo ? "lg:col-span-2" : "col-span-1"}>
+        <div className={showContactInfo ? "lg:col-span-2" : "col-span-3"}>
           <Card>
             <CardHeader>
               <CardTitle>{title}</CardTitle>

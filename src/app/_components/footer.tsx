@@ -88,7 +88,7 @@ export default function Footer() {
         <Card className="mt-8 p-4">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <div className="text-sm text-muted-foreground">
-              © {currentYear} O.R.E. Plumbing. All rights reserved. Powered by <a href="https://oakleydye.com" className="text-primary hover:underline">Oakley Dye Software & Design</a>.
+              © {currentYear} O.R.E. Plumbing. All rights reserved. Powered by <a href="https://oakleydye.com" rel="noopener noreferrer" target="_blank" className="text-primary hover:underline">Oakley Dye Software & Design</a>.
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
