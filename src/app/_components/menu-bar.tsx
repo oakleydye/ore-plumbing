@@ -67,12 +67,12 @@ export default function MenuBar() {
               </li>
             ))}
           </ul>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
         </div>
         
         {/* Mobile Menu */}
         <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" aria-label="Open menu">
