@@ -295,7 +295,7 @@ export default function WaterHeaterServicesPage() {
               Emergency Service
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-orange-600">
+              <Button size="lg" variant="outline" className="border-white text-orange-600 hover:bg-white hover:text-orange-600">
                 <Wrench className="w-4 h-4 mr-2" />
                 All Services
               </Button>

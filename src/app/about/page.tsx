@@ -366,7 +366,7 @@ export default function AboutPage() {
               Call (435) 890-3316
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+              <Button size="lg" variant="outline" className="border-white text-accent hover:bg-white hover:text-primary">
                 <Star className="w-4 h-4 mr-2" />
                 View Our Services
               </Button>

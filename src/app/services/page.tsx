@@ -24,49 +24,14 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    id: "emergency-repairs",
-    title: "Emergency Repairs",
-    description: "24/7 emergency plumbing services for burst pipes, major leaks, and urgent repairs.",
-    icon: AlertTriangle,
-    color: "bg-red-500",
-    features: ["24/7 Availability", "Rapid Response", "Emergency Diagnostics", "Temporary Fixes"],
-    href: "/services/emergency-repairs"
-  },
-  {
-    id: "drain-cleaning",
-    title: "Drain Cleaning",
-    description: "Professional drain cleaning and unclogging for all types of drains and sewer lines.",
-    icon: Droplets,
-    color: "bg-blue-500",
-    features: ["Hydro Jetting", "Snake Services", "Camera Inspection", "Preventive Maintenance"],
-    href: "/services/drain-cleaning"
-  },
-  {
-    id: "water-heater",
-    title: "Water Heater Services",
-    description: "Installation, repair, and maintenance of all water heater types including tankless systems.",
-    icon: Thermometer,
-    color: "bg-orange-500",
-    features: ["Tank & Tankless", "Installation", "Repair & Maintenance", "Energy Efficiency"],
-    href: "/services/water-heater"
-  },
-  {
-    id: "pipe-repair",
-    title: "Pipe Repair & Installation",
-    description: "Complete pipe services including repairs, replacements, and new installations.",
-    icon: Wrench,
-    color: "bg-green-500",
-    features: ["Leak Detection", "Pipe Replacement", "Repiping", "Pipe Insulation"],
-    href: "/services/pipe-repair"
-  },
-  {
-    id: "bathroom-remodeling",
-    title: "Bathroom Remodeling",
-    description: "Complete bathroom plumbing for remodels and renovations.",
-    icon: Home,
-    color: "bg-purple-500",
-    features: ["Fixture Installation", "Rough-in Plumbing", "ADA Compliance", "Modern Upgrades"],
-    href: "/services/bathroom-remodeling"
+    id: "residential-new-install",
+    title: "New Residential Installation",
+    description: "Complete plumbing systems for new construction, major renovations, and whole-house repipes.",
+    icon: Building,
+    color: "bg-indigo-600",
+    features: ["New Construction", "Whole House Repipes", "System Design", "Code Compliance"],
+    href: "/services/residential-new-install",
+    pricing: "$8,000 - $20,000+"
   },
   {
     id: "commercial",
@@ -75,7 +40,68 @@ const services = [
     icon: Building,
     color: "bg-gray-600",
     features: ["Preventive Maintenance", "Code Compliance", "Large Scale Repairs", "Emergency Service"],
-    href: "/services/commercial"
+    href: "/services/commercial",
+    pricing: "$2,000 - $15,000+"
+  },
+  {
+    id: "bathroom-remodeling",
+    title: "Bathroom Remodeling",
+    description: "Complete bathroom plumbing for remodels and renovations.",
+    icon: Home,
+    color: "bg-purple-500",
+    features: ["Fixture Installation", "Rough-in Plumbing", "ADA Compliance", "Modern Upgrades"],
+    href: "/services/bathroom-remodeling",
+    pricing: "$3,000 - $8,000+"
+  },
+  {
+    id: "water-softeners",
+    title: "Water Softener Installation",
+    description: "Professional water softener installation, repair, and maintenance services.",
+    icon: Droplets,
+    color: "bg-cyan-500",
+    features: ["System Installation", "Water Testing", "Maintenance", "Salt Delivery"],
+    href: "/services/water-softeners",
+    pricing: "$1,200 - $3,500+"
+  },
+  {
+    id: "water-heater",
+    title: "Water Heater Services",
+    description: "Installation, repair, and maintenance of all water heater types including tankless systems.",
+    icon: Thermometer,
+    color: "bg-orange-500",
+    features: ["Tank & Tankless", "Installation", "Repair & Maintenance", "Energy Efficiency"],
+    href: "/services/water-heater",
+    pricing: "$800 - $4,000+"
+  },
+  {
+    id: "pipe-repair",
+    title: "Pipe Repair & Installation",
+    description: "Complete pipe services including repairs, replacements, and new installations.",
+    icon: Wrench,
+    color: "bg-green-500",
+    features: ["Leak Detection", "Pipe Replacement", "Repiping", "Pipe Insulation"],
+    href: "/services/pipe-repair",
+    pricing: "$200 - $2,000+"
+  },
+  {
+    id: "drain-cleaning",
+    title: "Drain Cleaning",
+    description: "Professional drain cleaning and unclogging for all types of drains and sewer lines.",
+    icon: Droplets,
+    color: "bg-blue-500",
+    features: ["Hydro Jetting", "Snake Services", "Camera Inspection", "Preventive Maintenance"],
+    href: "/services/drain-cleaning",
+    pricing: "$150 - $800+"
+  },
+  {
+    id: "emergency-repairs",
+    title: "Emergency Repairs",
+    description: "24/7 emergency plumbing services for burst pipes, major leaks, and urgent repairs.",
+    icon: AlertTriangle,
+    color: "bg-red-500",
+    features: ["24/7 Availability", "Rapid Response", "Emergency Diagnostics", "Temporary Fixes"],
+    href: "/services/emergency-repairs",
+    pricing: "$200 - $1,500+"
   }
 ];
 
@@ -138,8 +164,15 @@ export default function ServicesPage() {
               return (
                 <Card key={service.id} className="h-full hover:shadow-lg transition-shadow">
                   <CardHeader>
-                    <div className={`w-12 h-12 rounded-lg ${service.color} flex items-center justify-center mb-4`}>
-                      <IconComponent className="w-6 h-6 text-white" />
+                    <div className="flex justify-between items-start mb-4">
+                      <div className={`w-12 h-12 rounded-lg ${service.color} flex items-center justify-center`}>
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                      {service.pricing && (
+                        <Badge variant="secondary" className="bg-primary/10 text-primary">
+                          {service.pricing}
+                        </Badge>
+                      )}
                     </div>
                     <CardTitle className="text-xl">{service.title}</CardTitle>
                     <CardDescription>{service.description}</CardDescription>

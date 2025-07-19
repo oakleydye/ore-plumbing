@@ -408,7 +408,7 @@ export default function BathroomRemodelingPage() {
               Schedule Consultation
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600">
+              <Button size="lg" variant="outline" className="border-white text-primary hover:bg-white hover:text-purple-600">
                 <Home className="w-4 h-4 mr-2" />
                 All Services
               </Button>

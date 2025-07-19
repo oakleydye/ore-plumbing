@@ -15,12 +15,14 @@ const MENU_ITEMS = [
 		label: "Services", 
 		href: "/services",
 		submenu: [
-			{ label: "Emergency Repairs", href: "/services/emergency-repairs" },
-			{ label: "Drain Cleaning", href: "/services/drain-cleaning" },
+			{ label: "New Residential Installation", href: "/services/residential-new-install" },
+			{ label: "Commercial Plumbing", href: "/services/commercial" },
+			{ label: "Bathroom Remodeling", href: "/services/bathroom-remodeling" },
+			{ label: "Water Softener Installation", href: "/services/water-softeners" },
 			{ label: "Water Heater Services", href: "/services/water-heater" },
 			{ label: "Pipe Repair & Installation", href: "/services/pipe-repair" },
-			{ label: "Bathroom Remodeling", href: "/services/bathroom-remodeling" },
-			{ label: "Commercial Plumbing", href: "/services/commercial" },
+			{ label: "Drain Cleaning", href: "/services/drain-cleaning" },
+			{ label: "Emergency Repairs", href: "/services/emergency-repairs" },
 		]
 	},
 	{ label: "Contact", href: "/contact" },

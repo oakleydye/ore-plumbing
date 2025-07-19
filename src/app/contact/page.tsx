@@ -143,7 +143,7 @@ export default function ContactPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactMethods.map((method, index) => (
-              <Card key={index} className={`hover:shadow-lg transition-all duration-300 ${method.urgent ? 'border-red-200 dark:border-red-800' : ''}`}>
+              <Card key={index} className={`h-full flex flex-col hover:shadow-lg transition-all duration-300 ${method.urgent ? 'border-red-200 dark:border-red-800' : ''}`}>
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     <div className={`p-2 ${method.color}/10 rounded-lg`}>
@@ -157,24 +157,26 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  <div>
-                    <p className="font-semibold text-foreground">{method.primary}</p>
-                    <p className="text-sm text-muted-foreground">{method.secondary}</p>
+                <CardContent className="flex flex-col flex-1">
+                  <div className="space-y-3 flex-1">
+                    <div>
+                      <p className="font-semibold text-foreground">{method.primary}</p>
+                      <p className="text-sm text-muted-foreground">{method.secondary}</p>
+                    </div>
+                    <p className="text-sm text-muted-foreground">{method.description}</p>
                   </div>
-                  <p className="text-sm text-muted-foreground">{method.description}</p>
                   <Button 
                     size="sm" 
-                    className="w-full" 
+                    className="w-full mt-4" 
                     variant={method.urgent ? "destructive" : "default"}
                     asChild
                   >
                     {method.method === "Email" ? (
                       <a href={`mailto:${method.primary}`}>Send Email</a>
+                    ) : method.method === "Text Message" ? (
+                      <a href={`sms:${method.primary.replace(/[^\d]/g, '')}`}>Send Text</a>
                     ) : (
-                      <a href={`tel:${method.primary.replace(/[^\d]/g, '')}`}>
-                        {method.method === "Text Message" ? "Send Text" : "Call Now"}
-                      </a>
+                      <a href={`tel:${method.primary.replace(/[^\d]/g, '')}`}>Call Now</a>
                     )}
                   </Button>
                 </CardContent>
@@ -336,7 +338,7 @@ export default function ContactPage() {
               Call (435) 890-3316
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+              <Button size="lg" variant="outline" className="border-white text-primary hover:bg-white hover:text-primary">
                 <Star className="w-4 h-4 mr-2" />
                 View Our Services
               </Button>

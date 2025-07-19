@@ -125,7 +125,7 @@ export default function ContactForm({
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Service Area</p>
-                    <p className="text-muted-foreground">Salt Lake City, Utah</p>
+                    <p className="text-muted-foreground">Logan, Utah</p>
                   </div>
                 </div>
 

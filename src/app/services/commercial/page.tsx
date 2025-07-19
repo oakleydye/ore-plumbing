@@ -431,7 +431,7 @@ export default function CommercialPlumbingPage() {
               Call Now: Emergency Service
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-700">
+              <Button size="lg" variant="outline" className="border-white text-primary hover:bg-white hover:text-gray-700">
                 <Building className="w-4 h-4 mr-2" />
                 All Services
               </Button>
