@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function About() {
   return (
     <Fragment>
-      <section className="max-w-6xl mx-auto my-12 px-4">
+      <section className="max-w-6xl mx-auto my-8 md:my-12 px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Image */}
           <div className="relative h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-lg">

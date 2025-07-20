@@ -126,7 +126,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16">
+      <section className="bg-gradient-to-b from-primary/5 to-background py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <Badge variant="outline" className="mb-4">
@@ -161,7 +161,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Methods */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -242,7 +242,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section id="contact-form" className="py-16 bg-muted/30">
+      <section id="contact-form" className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -263,7 +263,7 @@ export default function ContactPage() {
       </section>
 
       {/* Response Times */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -333,7 +333,7 @@ export default function ContactPage() {
       </section>
 
       {/* Service Areas & Why Contact Us */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Service Areas */}
@@ -407,7 +407,7 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
+      <section className="py-10 md:py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Get Started?

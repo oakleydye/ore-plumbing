@@ -118,7 +118,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16">
+      <section className="bg-gradient-to-b from-primary/5 to-background py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <Badge variant="outline" className="mb-4">
@@ -148,7 +148,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Our Services</h2>
@@ -198,7 +198,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Why Choose O.R.E. Plumbing?</h2>
@@ -220,7 +220,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <Card className="p-8">
             <h2 className="text-3xl font-bold text-foreground mb-4">

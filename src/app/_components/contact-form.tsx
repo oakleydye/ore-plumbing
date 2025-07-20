@@ -63,7 +63,7 @@ export default function ContactForm({
 
   if (submitted) {
     return (
-      <div className={`max-w-4xl mx-auto px-4 py-8 ${className}`}>
+      <div className={`max-w-4xl mx-auto px-4 py-6 md:py-8 ${className}`}>
         <Card className="text-center">
           <CardContent className="pt-6">
             <div className="flex justify-center mb-4">
@@ -82,7 +82,7 @@ export default function ContactForm({
   }
 
   return (
-    <div className={`max-w-4xl mx-auto px-4 py-8 ${className}`}>
+    <div className={`max-w-4xl mx-auto px-4 py-6 md:py-8 ${className}`}>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Contact Info */}
         {showContactInfo && (

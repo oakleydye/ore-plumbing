@@ -100,7 +100,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16">
+      <section className="bg-gradient-to-b from-primary/5 to-background py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
@@ -146,7 +146,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Statement */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-4xl mx-auto px-4">
           <Card className="bg-primary/5 border-primary/20">
             <CardHeader className="text-center">
@@ -170,7 +170,7 @@ export default function AboutPage() {
       </section>
 
       {/* Company Values */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
@@ -198,7 +198,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose O.R.E. Plumbing?</h2>
@@ -228,7 +228,7 @@ export default function AboutPage() {
       </section>
 
       {/* Service Areas & Certifications */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Service Areas */}
@@ -298,7 +298,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Commitment */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Commitment to You</h2>
@@ -354,7 +354,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
+      <section className="py-10 md:py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Experience the O.R.E. Difference?

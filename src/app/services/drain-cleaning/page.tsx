@@ -93,7 +93,7 @@ export default function DrainCleaningPage() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-blue-50 to-background dark:from-blue-950/20 py-16">
+      <section className="bg-gradient-to-b from-blue-50 to-background dark:from-blue-950/20 py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <Badge variant="outline" className="mb-4">
@@ -120,7 +120,7 @@ export default function DrainCleaningPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Our Drain Cleaning Services</h2>
@@ -159,7 +159,7 @@ export default function DrainCleaningPage() {
       </section>
 
       {/* Common Problems */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Common Drain Problems We Solve</h2>
@@ -184,7 +184,7 @@ export default function DrainCleaningPage() {
       </section>
 
       {/* Drain Types */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -231,7 +231,7 @@ export default function DrainCleaningPage() {
       </section>
 
       {/* Process */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Our Drain Cleaning Process</h2>

@@ -80,7 +80,7 @@ export default function EmergencyRepairsPage() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-red-50 to-background dark:from-red-950/20 py-16">
+      <section className="bg-gradient-to-b from-red-50 to-background dark:from-red-950/20 py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <Badge variant="destructive" className="mb-4">
@@ -110,7 +110,7 @@ export default function EmergencyRepairsPage() {
       </section>
 
       {/* Emergency Services */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Emergency Services We Handle</h2>
@@ -140,7 +140,7 @@ export default function EmergencyRepairsPage() {
       </section>
 
       {/* Emergency Process */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Our Emergency Response Process</h2>
@@ -166,7 +166,7 @@ export default function EmergencyRepairsPage() {
       </section>
 
       {/* Features */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -236,7 +236,7 @@ export default function EmergencyRepairsPage() {
       </section>
 
       {/* Related Services */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Related Services</h2>

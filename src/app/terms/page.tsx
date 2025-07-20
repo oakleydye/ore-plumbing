@@ -47,7 +47,7 @@ export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16">
+      <section className="bg-gradient-to-b from-primary/5 to-background py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
             <Badge variant="outline" className="mb-4">
@@ -69,7 +69,7 @@ export default function TermsOfServicePage() {
       </section>
 
       {/* Service Overview */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Service Terms Overview</h2>
@@ -97,7 +97,7 @@ export default function TermsOfServicePage() {
       </section>
 
       {/* Terms Details */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4">
           <div className="space-y-8">
             {/* Acceptance of Terms */}
@@ -387,7 +387,7 @@ export default function TermsOfServicePage() {
       </section>
 
       {/* Contact Information */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-4xl mx-auto px-4">
           <Card>
             <CardHeader>
@@ -423,7 +423,7 @@ export default function TermsOfServicePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
+      <section className="py-10 md:py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Schedule Plumbing Service?

@@ -144,7 +144,7 @@ export default function PipeRepairPage() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-green-500/10 to-background py-16">
+      <section className="bg-gradient-to-b from-green-500/10 to-background py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <Badge variant="outline" className="mb-4">
@@ -177,7 +177,7 @@ export default function PipeRepairPage() {
       </section>
 
       {/* Pipe Services */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Pipe Services</h2>
@@ -226,7 +226,7 @@ export default function PipeRepairPage() {
       </section>
 
       {/* Pipe Materials */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Pipe Materials We Install</h2>
@@ -280,7 +280,7 @@ export default function PipeRepairPage() {
       </section>
 
       {/* Common Problems */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Common Pipe Problems We Fix</h2>
@@ -333,7 +333,7 @@ export default function PipeRepairPage() {
       </section>
 
       {/* Process */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 md:py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Pipe Repair Process</h2>
@@ -369,7 +369,7 @@ export default function PipeRepairPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-green-600 to-green-500 text-white">
+      <section className="py-10 md:py-16 bg-gradient-to-r from-green-600 to-green-500 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Need Pipe Repair or Installation?
