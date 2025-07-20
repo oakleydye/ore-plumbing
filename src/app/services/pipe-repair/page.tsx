@@ -159,13 +159,17 @@ export default function PipeRepairPage() {
               From leak detection to complete repiping projects.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-green-600 hover:bg-green-700">
-                <Clock className="w-4 h-4 mr-2" />
-                Emergency Repair
+              <Button size="lg" className="bg-green-600 hover:bg-green-700" asChild>
+                <a href="tel:4358903316">
+                  <Clock className="w-4 h-4 mr-2" />
+                  Emergency Repair
+                </a>
               </Button>
-              <Button size="lg" variant="outline">
-                <Search className="w-4 h-4 mr-2" />
-                Free Leak Detection
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/contact">
+                  <Search className="w-4 h-4 mr-2" />
+                  Free Leak Detection
+                </Link>
               </Button>
             </div>
           </div>
@@ -374,12 +378,14 @@ export default function PipeRepairPage() {
             Get professional pipe services with upfront pricing and guaranteed satisfaction.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-green-600 hover:bg-gray-100">
-              <AlertTriangle className="w-4 h-4 mr-2" />
-              Emergency Service
+            <Button size="lg" variant="secondary" className="bg-white text-green-600 hover:bg-gray-100" asChild>
+              <a href="tel:4358903316">
+                <AlertTriangle className="w-4 h-4 mr-2" />
+                Emergency Service
+              </a>
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-green-600 hover:bg-white hover:text-green-600">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600 w-full">
                 <Wrench className="w-4 h-4 mr-2" />
                 All Services
               </Button>

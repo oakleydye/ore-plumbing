@@ -162,13 +162,17 @@ export default function BathroomRemodelingPage() {
               installation, we make your dream bathroom a reality with expert craftsmanship.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
-                <Clock className="w-4 h-4 mr-2" />
-                Schedule Consultation
+              <Button size="lg" className="bg-purple-600 hover:bg-purple-700" asChild>
+                <Link href="/contact">
+                  <Clock className="w-4 h-4 mr-2" />
+                  Schedule Consultation
+                </Link>
               </Button>
-              <Button size="lg" variant="outline">
-                <Star className="w-4 h-4 mr-2" />
-                View Portfolio
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/contact">
+                  <Star className="w-4 h-4 mr-2" />
+                  View Portfolio
+                </Link>
               </Button>
             </div>
           </div>
@@ -403,12 +407,14 @@ export default function BathroomRemodelingPage() {
             Get professional plumbing services that bring your bathroom vision to life.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-purple-600 hover:bg-gray-100">
-              <Clock className="w-4 h-4 mr-2" />
-              Schedule Consultation
+            <Button size="lg" variant="secondary" className="bg-white text-purple-600 hover:bg-gray-100" asChild>
+              <Link href="/contact">
+                <Clock className="w-4 h-4 mr-2" />
+                Schedule Consultation
+              </Link>
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-primary hover:bg-white hover:text-purple-600">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 w-full">
                 <Home className="w-4 h-4 mr-2" />
                 All Services
               </Button>

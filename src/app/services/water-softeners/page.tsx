@@ -136,9 +136,11 @@ export default function WaterSoftenersPage() {
               improves cleaning, and saves you money. Professional installation and service in Northern Utah.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                <Calendar className="w-4 h-4 mr-2" />
-                Schedule Installation
+              <Button size="lg" asChild>
+                <Link href="/contact">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Schedule Installation
+                </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <a href="tel:4358903316">
@@ -210,8 +212,10 @@ export default function WaterSoftenersPage() {
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full mt-6">
-                    Get Quote
+                  <Button className="w-full mt-6" asChild>
+                    <Link href="/contact">
+                      Get Quote
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -352,12 +356,14 @@ export default function WaterSoftenersPage() {
             Professional water softener installation and service in Northern Utah.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
-              <Phone className="w-4 h-4 mr-2" />
-              Call (435) 890-3316
+            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100" asChild>
+              <a href="tel:4358903316">
+                <Phone className="w-4 h-4 mr-2" />
+                Call (435) 890-3316
+              </a>
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-primary hover:bg-white hover:text-primary">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary w-full">
                 <Star className="w-4 h-4 mr-2" />
                 View All Services
               </Button>

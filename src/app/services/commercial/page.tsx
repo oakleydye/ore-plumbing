@@ -188,13 +188,17 @@ export default function CommercialPlumbingPage() {
               24/7 emergency service, preventive maintenance, and code compliance expertise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gray-700 hover:bg-gray-800">
-                <Phone className="w-4 h-4 mr-2" />
-                Emergency Service
+              <Button size="lg" className="bg-gray-700 hover:bg-gray-800" asChild>
+                <a href="tel:4358903316">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Emergency Service
+                </a>
               </Button>
-              <Button size="lg" variant="outline">
-                <Calendar className="w-4 h-4 mr-2" />
-                Schedule Maintenance
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/contact">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Schedule Maintenance
+                </Link>
               </Button>
             </div>
           </div>
@@ -426,12 +430,14 @@ export default function CommercialPlumbingPage() {
             Get reliable commercial plumbing solutions with 24/7 emergency support and preventive maintenance programs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-gray-700 hover:bg-gray-100">
-              <Phone className="w-4 h-4 mr-2" />
-              Call Now: Emergency Service
+            <Button size="lg" variant="secondary" className="bg-white text-gray-700 hover:bg-gray-100" asChild>
+              <a href="tel:4358903316">
+                <Phone className="w-4 h-4 mr-2" />
+                Call Now: Emergency Service
+              </a>
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-primary hover:bg-white hover:text-gray-700">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-700 w-full">
                 <Building className="w-4 h-4 mr-2" />
                 All Services
               </Button>

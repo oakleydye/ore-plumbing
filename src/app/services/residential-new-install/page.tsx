@@ -195,9 +195,11 @@ export default function ResidentialNewInstallPage() {
               and whole-house repipes. Professional service from rough-in to finish.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                <ClipboardList className="w-4 h-4 mr-2" />
-                Get Project Quote
+              <Button size="lg" asChild>
+                <Link href="/contact">
+                  <ClipboardList className="w-4 h-4 mr-2" />
+                  Get Project Quote
+                </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <a href="tel:4358903316">
@@ -447,12 +449,14 @@ export default function ResidentialNewInstallPage() {
             Licensed, insured, and experienced in all aspects of residential plumbing installation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
-              <Phone className="w-4 h-4 mr-2" />
-              Call (435) 890-3316
+            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100" asChild>
+              <a href="tel:4358903316">
+                <Phone className="w-4 h-4 mr-2" />
+                Call (435) 890-3316
+              </a>
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-primary hover:bg-white hover:text-primary">
+              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100 w-full">
                 <Star className="w-4 h-4 mr-2" />
                 View All Services
               </Button>

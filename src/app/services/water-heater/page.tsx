@@ -129,13 +129,17 @@ export default function WaterHeaterServicesPage() {
               Tank, tankless, and hybrid systems from trusted brands with guaranteed satisfaction.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-orange-600 hover:bg-orange-700">
-                <Clock className="w-4 h-4 mr-2" />
-                Schedule Service
+              <Button size="lg" className="bg-orange-600 hover:bg-orange-700" asChild>
+                <Link href="/contact">
+                  <Clock className="w-4 h-4 mr-2" />
+                  Schedule Service
+                </Link>
               </Button>
-              <Button size="lg" variant="outline">
-                <Shield className="w-4 h-4 mr-2" />
-                Get Free Estimate
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/contact">
+                  <Shield className="w-4 h-4 mr-2" />
+                  Get Free Estimate
+                </Link>
               </Button>
             </div>
           </div>
@@ -179,7 +183,9 @@ export default function WaterHeaterServicesPage() {
                         <DollarSign className="w-4 h-4 text-green-600" />
                         <span className="font-semibold">{type.priceRange}</span>
                       </div>
-                      <Button variant="outline" size="sm">Learn More</Button>
+                      <Button variant="outline" size="sm" asChild>
+                        <Link href="/contact">Learn More</Link>
+                      </Button>
                     </div>
                   </div>
                 </CardContent>
@@ -290,12 +296,14 @@ export default function WaterHeaterServicesPage() {
             Get fast, reliable water heater installation, repair, and maintenance services.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-orange-600 hover:bg-gray-100">
-              <Clock className="w-4 h-4 mr-2" />
-              Emergency Service
+            <Button size="lg" variant="secondary" className="bg-white text-orange-600 hover:bg-gray-100" asChild>
+              <a href="tel:4358903316">
+                <Clock className="w-4 h-4 mr-2" />
+                Emergency Service
+              </a>
             </Button>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-white text-orange-600 hover:bg-white hover:text-orange-600">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-orange-600 w-full">
                 <Wrench className="w-4 h-4 mr-2" />
                 All Services
               </Button>
