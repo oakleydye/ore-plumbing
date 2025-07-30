@@ -33,16 +33,16 @@ export const metadata: Metadata = {
 };
 
 const contactMethods = [
-  {
-    method: "Emergency Service",
-    icon: AlertTriangle,
-    primary: "(435) 890-3316",
-    secondary: "24/7 Emergency Response",
-    description:
-      "For urgent plumbing emergencies like burst pipes, major leaks, or no hot water.",
-    color: "bg-red-500",
-    urgent: true,
-  },
+  // {
+  //   method: "Emergency Service",
+  //   icon: AlertTriangle,
+  //   primary: "(435) 890-3316",
+  //   secondary: "24/7 Emergency Response",
+  //   description:
+  //     "For urgent plumbing emergencies like burst pipes, major leaks, or no hot water.",
+  //   color: "bg-red-500",
+  //   urgent: true,
+  // },
   {
     method: "General Inquiries",
     icon: Phone,
@@ -115,7 +115,7 @@ const responseTimeInfo = [
 
 const whyContactUs = [
   "Licensed & Insured Plumbing Contractors",
-  "24/7 Emergency Response Available",
+  // "24/7 Emergency Response Available",
   "Upfront Pricing - No Hidden Fees",
   "Same-Day Service for Most Issues",
   "Free Estimates on Major Projects",
@@ -144,9 +144,9 @@ export default function ContactPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="tel:4358903316">
-                <Button size="lg" className="bg-red-600 hover:bg-red-700">
-                  <AlertTriangle className="w-4 h-4 mr-2" />
-                  Emergency: (435) 890-3316
+                <Button size="lg" className="bg-primary">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call: (435) 890-3316
                 </Button>
               </a>
               <a href="#contact-form">
@@ -172,7 +172,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {contactMethods.map((method, index) => (
               <Card
                 key={index}

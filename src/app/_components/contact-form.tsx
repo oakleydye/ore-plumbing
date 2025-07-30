@@ -32,6 +32,7 @@ export default function ContactForm({
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -40,25 +41,44 @@ export default function ContactForm({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setSubmitted(true);
-    setIsSubmitting(false);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        message: "",
-        urgency: "normal"
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 3000);
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
+      setSubmitted(true);
+      
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+          urgency: "normal"
+        });
+      }, 5000);
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setError(error instanceof Error ? error.message : 'Failed to send message. Please try again or call us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -135,13 +155,13 @@ export default function ContactForm({
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Availability</p>
-                    <p className="text-muted-foreground">24/7 Emergency Service</p>
+                    <p className="text-muted-foreground">Mon - Sat | 7am - 6pm</p>
                   </div>
                 </div>
 
                 <div className="pt-4">
                   <Button className="w-full" asChild>
-                    <a href="tel:4358903316">Call for Emergency Service</a>
+                    <a href="tel:4358903316">Call for Service</a>
                   </Button>
                 </div>
               </CardContent>
@@ -158,6 +178,22 @@ export default function ContactForm({
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Error Message */}
+                {error && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <div className="flex">
+                      <div className="ml-3">
+                        <h3 className="text-sm font-medium text-red-800">
+                          Error sending message
+                        </h3>
+                        <div className="mt-2 text-sm text-red-700">
+                          <p>{error}</p>
+                          <p className="mt-1">Please try again or call us directly at (435) 890-3316</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 {/* Name and Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">

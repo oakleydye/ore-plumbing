@@ -93,21 +93,21 @@ const services = [
     href: "/services/drain-cleaning",
     pricing: "$150 - $800+"
   },
-  {
-    id: "emergency-repairs",
-    title: "Emergency Repairs",
-    description: "24/7 emergency plumbing services for burst pipes, major leaks, and urgent repairs.",
-    icon: AlertTriangle,
-    color: "bg-red-500",
-    features: ["24/7 Availability", "Rapid Response", "Emergency Diagnostics", "Temporary Fixes"],
-    href: "/services/emergency-repairs",
-    pricing: "$200 - $1,500+"
-  }
+  // {
+  //   id: "emergency-repairs",
+  //   title: "Emergency Repairs",
+  //   description: "24/7 emergency plumbing services for burst pipes, major leaks, and urgent repairs.",
+  //   icon: AlertTriangle,
+  //   color: "bg-red-500",
+  //   features: ["24/7 Availability", "Rapid Response", "Emergency Diagnostics", "Temporary Fixes"],
+  //   href: "/services/emergency-repairs",
+  //   pricing: "$200 - $1,500+"
+  // }
 ];
 
 const whyChooseUs = [
   "Licensed & Insured",
-  "24/7 Emergency Service",
+  // "24/7 Emergency Service",
   "Upfront Pricing",
   "Satisfaction Guarantee",
   "Local Northern Utah Company",
@@ -139,7 +139,7 @@ export default function ServicesPage() {
               <Button size="lg" variant="outline" asChild>
                 <a href="tel:4358903316">
                   <Clock className="w-4 h-4 mr-2" />
-                  Call for Emergency Service
+                  Call for Service
                 </a>
               </Button>
             </div>

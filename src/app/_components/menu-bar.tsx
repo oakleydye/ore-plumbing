@@ -22,7 +22,7 @@ const MENU_ITEMS = [
 			{ label: "Water Heater Services", href: "/services/water-heater" },
 			{ label: "Pipe Repair & Installation", href: "/services/pipe-repair" },
 			{ label: "Drain Cleaning", href: "/services/drain-cleaning" },
-			{ label: "Emergency Repairs", href: "/services/emergency-repairs" },
+			// { label: "Emergency Repairs", href: "/services/emergency-repairs" },
 		]
 	},
 	{ label: "Contact", href: "/contact" },

@@ -60,11 +60,11 @@ const whyChooseUs = [
     description: "Proud to serve our community with personalized, local service and support.",
     icon: MapPin
   },
-  {
-    title: "24/7 Emergency Service",
-    description: "Round-the-clock availability for plumbing emergencies and urgent repairs.",
-    icon: Clock
-  },
+  // {
+  //   title: "24/7 Emergency Service",
+  //   description: "Round-the-clock availability for plumbing emergencies and urgent repairs.",
+  //   icon: Clock
+  // },
   {
     title: "Upfront Pricing",
     description: "Transparent, honest pricing with no hidden fees or surprise charges.",

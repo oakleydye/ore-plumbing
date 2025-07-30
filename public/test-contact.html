@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        form { background: #f5f5f5; padding: 20px; border-radius: 8px; }
+        input, select, textarea { width: 100%; padding: 8px; margin: 5px 0 10px 0; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:disabled { background: #ccc; }
+        .result { margin-top: 20px; padding: 10px; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <h1>Contact Form API Test</h1>
+    <form id="contactForm">
+        <label>Name *</label>
+        <input type="text" name="name" required>
+        
+        <label>Email *</label>
+        <input type="email" name="email" required>
+        
+        <label>Phone</label>
+        <input type="tel" name="phone">
+        
+        <label>Service</label>
+        <select name="service">
+            <option value="">Select a service</option>
+            <option value="emergency">Emergency Repair</option>
+            <option value="drain-cleaning">Drain Cleaning</option>
+            <option value="water-heater">Water Heater Service</option>
+            <option value="pipe-repair">Pipe Repair</option>
+            <option value="bathroom-remodel">Bathroom Remodeling</option>
+            <option value="commercial">Commercial Plumbing</option>
+            <option value="other">Other</option>
+        </select>
+        
+        <label>Urgency</label>
+        <select name="urgency">
+            <option value="normal">Normal</option>
+            <option value="urgent">Urgent</option>
+            <option value="emergency">Emergency</option>
+            <option value="quote">Just need a quote</option>
+        </select>
+        
+        <label>Message *</label>
+        <textarea name="message" rows="4" required></textarea>
+        
+        <button type="submit" id="submitBtn">Send Test Email</button>
+    </form>
+    
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const resultDiv = document.getElementById('result');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            resultDiv.innerHTML = '';
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<div class="result success">✅ Success! Email sent. Message ID: ${result.id || 'N/A'}</div>`;
+                    e.target.reset();
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">❌ Error: ${result.error || result.message}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Network Error: ${error.message}</div>`;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Test Email';
+            }
+        });
+    </script>
+</body>
+</html>

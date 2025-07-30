@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-foreground">O.R.E. Plumbing</h3>
             <p className="text-sm text-muted-foreground">
-              Professional plumbing services with 24/7 emergency support. 
+              Professional plumbing services in northern Utah. 
               Serving residential and commercial customers with excellence.
             </p>
             <div className="flex space-x-2">
@@ -35,7 +35,7 @@ export default function Footer() {
               <li><a href="/services/bathroom-remodeling" className="text-muted-foreground hover:text-primary transition-colors">Bathroom Remodeling</a></li>
               <li><a href="/services/water-softeners" className="text-muted-foreground hover:text-primary transition-colors">Water Softeners</a></li>
               <li><a href="/services/water-heater" className="text-muted-foreground hover:text-primary transition-colors">Water Heater Service</a></li>
-              <li><a href="/services/emergency-repairs" className="text-muted-foreground hover:text-primary transition-colors">Emergency Repairs</a></li>
+              {/* <li><a href="/services/emergency-repairs" className="text-muted-foreground hover:text-primary transition-colors">Emergency Repairs</a></li> */}
             </ul>
           </div>
 
@@ -61,12 +61,12 @@ export default function Footer() {
                   Logan, Utah
                 </span>
               </div>
-              <div className="flex items-center space-x-3">
+              {/* <div className="flex items-center space-x-3">
                 <Clock className="w-4 h-4 text-primary" />
                 <span className="text-sm text-muted-foreground">
                   24/7 Emergency Service
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -78,7 +78,7 @@ export default function Footer() {
               <li><a href="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</a></li>
               <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</a></li>
               <li><a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a></li>
-              <li><a href="/services/emergency-repairs" className="text-muted-foreground hover:text-primary transition-colors">Emergency Service</a></li>
+              {/* <li><a href="/services/emergency-repairs" className="text-muted-foreground hover:text-primary transition-colors">Emergency Service</a></li> */}
               <li><a href="/reviews" className="text-muted-foreground hover:text-primary transition-colors">Customer Reviews</a></li>
             </ul>
           </div>
