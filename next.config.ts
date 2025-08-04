@@ -44,7 +44,7 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Redirect www to non-www for SEO
+  // Redirect non-www to www (Vercel recommended)
   async redirects() {
     return [
       {
@@ -52,10 +52,10 @@ const nextConfig: NextConfig = {
         has: [
           {
             type: 'host',
-            value: 'www.oreplumbing.com',
+            value: 'oreplumbing.com',
           },
         ],
-        destination: 'https://oreplumbing.com/:path*',
+        destination: 'https://www.oreplumbing.com/:path*',
         permanent: true,
       },
     ];

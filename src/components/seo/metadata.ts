@@ -25,7 +25,7 @@ export interface SEOConfig {
 
 export function generateMetadata(config: SEOConfig): Metadata {
   const baseUrl = process.env.NODE_ENV === 'production' 
-    ? 'https://oreplumbing.com' 
+    ? 'https://www.oreplumbing.com' 
     : 'http://localhost:3000';
 
   return {

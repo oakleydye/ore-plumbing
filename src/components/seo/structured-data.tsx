@@ -23,7 +23,7 @@ interface LocalBusinessProps {
 export function LocalBusinessSchema({
   name = "O.R.E. Plumbing",
   description = "Professional plumbing services in Cache County, Utah. 24/7 emergency service, drain cleaning, water heater installation, pipe repair and more.",
-  url = "https://oreplumbing.com",
+  url = "https://www.oreplumbing.com",
   telephone = "+14358903316",
   address = {
     streetAddress: "",
