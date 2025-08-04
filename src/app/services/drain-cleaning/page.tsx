@@ -13,12 +13,20 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { generateMetadata, getLocalSEOKeywords } from "@/components/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Professional Drain Cleaning Services | O.R.E. Plumbing - Northern Utah",
-  description: "Expert drain cleaning services including hydro jetting, snake services, and camera inspection. Clear clogs and maintain your drains in Northern Utah.",
-  keywords: "drain cleaning, hydro jetting, sewer cleaning, clogged drains, drain snake, Northern Utah plumber",
-};
+export const metadata: Metadata = generateMetadata({
+  title: "Drain Cleaning Services Cache County | Logan, UT | O.R.E. Plumbing | Hydro Jetting",
+  description: "Professional drain cleaning in Cache County, Utah. Hydro jetting, snake services, camera inspection for clogged drains & sewer lines. Serving Logan, North Logan, Hyde Park, Smithfield. Emergency service available.",
+  keywords: getLocalSEOKeywords("drain cleaning"),
+  canonical: "https://oreplumbing.com/services/drain-cleaning",
+  openGraph: {
+    title: "Expert Drain Cleaning Services | Cache County, Utah",
+    description: "Professional drain cleaning and unclogging services in Cache County. Hydro jetting, camera inspection, and emergency drain service.",
+    type: "website",
+    url: "https://oreplumbing.com/services/drain-cleaning",
+  },
+});
 
 const drainServices = [
   {

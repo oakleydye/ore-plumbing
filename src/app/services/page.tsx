@@ -15,12 +15,20 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { generateMetadata, getLocalSEOKeywords } from "@/components/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Plumbing Services | O.R.E. Plumbing - Northern Utah",
-  description: "Professional plumbing services including emergency repairs, drain cleaning, water heater installation, and more. Serving residential and commercial customers in Northern Utah.",
-  keywords: "plumbing services, emergency plumbing, drain cleaning, water heater, pipe repair, Utah plumber",
-};
+export const metadata: Metadata = generateMetadata({
+  title: "Plumbing Services Cache County | O.R.E. Plumbing Logan, UT | Emergency & Residential",
+  description: "Complete plumbing services in Cache County, Utah. Emergency repairs, drain cleaning, water heater installation, pipe repair, bathroom remodeling & commercial plumbing. Licensed plumbers serving Logan, North Logan, Hyde Park, Smithfield & surrounding areas.",
+  keywords: getLocalSEOKeywords("plumbing services"),
+  canonical: "https://oreplumbing.com/services",
+  openGraph: {
+    title: "Complete Plumbing Services | Cache County, Utah | O.R.E. Plumbing",
+    description: "Professional plumbing services including emergency repairs, drain cleaning, water heater installation, and more. Serving Cache County communities.",
+    type: "website",
+    url: "https://oreplumbing.com/services",
+  },
+});
 
 const services = [
   {

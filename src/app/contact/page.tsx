@@ -22,15 +22,21 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { generateMetadata, getLocalSEOKeywords } from "@/components/seo/metadata";
 import ContactForm from "@/app/_components/contact-form";
 
-export const metadata: Metadata = {
-  title: "Contact O.R.E. Plumbing | Get a Quote - Northern Utah",
-  description:
-    "Contact O.R.E. Plumbing for professional plumbing services in Northern Utah. 24/7 emergency service, free quotes, and fast response times.",
-  keywords:
-    "contact plumber, Northern Utah plumbing, emergency plumber, plumbing quote, O.R.E. Plumbing",
-};
+export const metadata: Metadata = generateMetadata({
+  title: "Contact O.R.E. Plumbing | Cache County Plumber | Logan, UT | (435) 890-3316",
+  description: "Contact Cache County's trusted plumber. Free estimates, 24/7 emergency service in Logan, North Logan, Hyde Park, Smithfield & surrounding areas. Licensed & insured. Call (435) 890-3316.",
+  keywords: `${getLocalSEOKeywords("contact plumber")}, Cache County plumber contact, Logan Utah plumber phone, emergency plumber Cache County`,
+  canonical: "https://oreplumbing.com/contact",
+  openGraph: {
+    title: "Contact O.R.E. Plumbing | Cache County's Premier Plumbing Service",
+    description: "Get in touch with Cache County's most trusted plumbing company. Free estimates and 24/7 emergency service available.",
+    type: "website",
+    url: "https://oreplumbing.com/contact",
+  },
+});
 
 const contactMethods = [
   // {

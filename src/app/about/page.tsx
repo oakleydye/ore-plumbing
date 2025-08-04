@@ -19,12 +19,20 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
+import { generateMetadata, getLocalSEOKeywords } from "@/components/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "About O.R.E. Plumbing | Professional Plumbers in Northern Utah",
-  description: "Learn about O.R.E. Plumbing's mission, values, and commitment to excellence in residential and commercial plumbing services throughout Northern Utah.",
-  keywords: "about O.R.E. Plumbing, Northern Utah plumbers, professional plumbing services, licensed plumbers",
-};
+export const metadata: Metadata = generateMetadata({
+  title: "About O.R.E. Plumbing | Cache County's Trusted Plumbers | Logan, UT",
+  description: "Learn about O.R.E. Plumbing, Cache County's premier plumbing company. Licensed, insured & locally owned. Serving Logan, North Logan, Hyde Park, Smithfield & surrounding Utah communities with integrity and excellence.",
+  keywords: getLocalSEOKeywords("plumbing company"),
+  canonical: "https://oreplumbing.com/about",
+  openGraph: {
+    title: "About O.R.E. Plumbing | Cache County's Premier Plumbing Company",
+    description: "Locally owned and operated plumbing company serving Cache County, Utah with integrity, excellence, and reliable service.",
+    type: "website",
+    url: "https://oreplumbing.com/about",
+  },
+});
 
 const companyValues = [
   {
