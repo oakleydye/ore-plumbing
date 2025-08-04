@@ -133,8 +133,8 @@ export default function ContactForm({
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <a href="mailto:info@oreplumbing.com" className="text-muted-foreground hover:text-primary transition-colors">
-                      info@oreplumbing.com
+                    <a href="mailto:ore.plumbing@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      ore.plumbing@gmail.com
                     </a>
                   </div>
                 </div>
@@ -238,12 +238,14 @@ export default function ContactForm({
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="emergency">Emergency Repair</SelectItem>
-                        <SelectItem value="drain-cleaning">Drain Cleaning</SelectItem>
-                        <SelectItem value="water-heater">Water Heater Service</SelectItem>
-                        <SelectItem value="pipe-repair">Pipe Repair</SelectItem>
-                        <SelectItem value="bathroom-remodel">Bathroom Remodeling</SelectItem>
+                        <SelectItem value="emergency-repairs">Emergency Repairs</SelectItem>
+                        <SelectItem value="residential-new-install">New Residential Installation</SelectItem>
                         <SelectItem value="commercial">Commercial Plumbing</SelectItem>
+                        <SelectItem value="bathroom-remodeling">Bathroom Remodeling</SelectItem>
+                        <SelectItem value="water-softeners">Water Softener Installation</SelectItem>
+                        <SelectItem value="water-heater">Water Heater Services</SelectItem>
+                        <SelectItem value="pipe-repair">Pipe Repair & Installation</SelectItem>
+                        <SelectItem value="drain-cleaning">Drain Cleaning</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>

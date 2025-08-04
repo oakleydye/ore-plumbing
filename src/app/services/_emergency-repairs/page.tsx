@@ -78,10 +78,10 @@ const emergencySteps = [
 
 export default function EmergencyRepairsPage() {
   return (
-    <div className="min-h-screen pt-24 pb-16">
+    <div className="min-h-screen pb-16">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-red-50 to-background dark:from-red-950/20 py-12 md:py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 mt-10">
           <div className="text-center mb-12">
             <Badge variant="destructive" className="mb-4">
               <Clock className="w-4 h-4 mr-2" />

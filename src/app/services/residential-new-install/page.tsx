@@ -178,10 +178,10 @@ const whyChooseNewInstall = [
 
 export default function ResidentialNewInstallPage() {
   return (
-    <div className="min-h-screen pt-24 pb-16">
+    <div className="min-h-screen pb-16">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/5 to-background py-12 md:py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 mt-10">
           <div className="text-center mb-12">
             <Badge variant="outline" className="mb-4">
               <Building className="w-4 h-4 mr-2" />

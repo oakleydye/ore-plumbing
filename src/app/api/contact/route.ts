@@ -47,7 +47,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactFo
     // Send email to the plumber
     const { data, error } = await resend.emails.send({
       from: 'Ore Plumbing Website <noreply@oreplumbing.com>',
-      to: ['info@oreplumbing.com'], // Replace with the plumber's actual email
+      to: ['ore.plumbing@gmail.com'],
       subject: `New Contact Form Submission - ${urgencyLabel}`,
       html: emailHtml,
     });

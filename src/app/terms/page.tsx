@@ -406,7 +406,7 @@ export default function TermsOfServicePage() {
                 <div className="space-y-2">
                   <Mail className="w-8 h-8 text-primary mx-auto" />
                   <h3 className="font-semibold">Email</h3>
-                  <p className="text-muted-foreground">info@oreplumbing.com</p>
+                  <p className="text-muted-foreground">ore.plumbing@gmail.com</p>
                 </div>
                 <div className="space-y-2">
                   <FileText className="w-8 h-8 text-primary mx-auto" />

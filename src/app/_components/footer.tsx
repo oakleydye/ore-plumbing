@@ -51,8 +51,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:info@oreplumbing.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  info@oreplumbing.com
+                <a href="mailto:ore.plumbing@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  ore.plumbing@gmail.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">

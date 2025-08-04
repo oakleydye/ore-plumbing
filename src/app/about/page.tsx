@@ -98,10 +98,10 @@ const certifications = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-24 pb-16">
+    <div className="min-h-screen pb-16">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/5 to-background py-12 md:py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 mt-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
             <div>
