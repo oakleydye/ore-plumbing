@@ -6,6 +6,7 @@ import MenuBar from "../_components/menu-bar";
 import Footer from "../_components/footer";
 import { generateMetadata, defaultSEO } from "@/components/seo/metadata";
 import { LocalBusinessSchema } from "@/components/seo/structured-data";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
+          <Analytics />
           <MenuBar />
           {children}
           <Footer />
