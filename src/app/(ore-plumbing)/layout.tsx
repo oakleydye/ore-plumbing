@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { Providers } from "@/utils/providers";
-import MenuBar from "./_components/menu-bar";
-import Footer from "./_components/footer";
+import MenuBar from "../_components/menu-bar";
+import Footer from "../_components/footer";
 import { generateMetadata, defaultSEO } from "@/components/seo/metadata";
 import { LocalBusinessSchema } from "@/components/seo/structured-data";
 

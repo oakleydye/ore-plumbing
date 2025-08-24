@@ -25,6 +25,7 @@ const MENU_ITEMS = [
 			// { label: "Emergency Repairs", href: "/services/emergency-repairs" },
 		]
 	},
+	{ label: "Blog", href: "/blog" },
 	{ label: "Contact", href: "/contact" },
 ];
 
