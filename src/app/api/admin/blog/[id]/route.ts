@@ -4,11 +4,12 @@ import { revalidateBlogCache } from '@/lib/blog';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const post = await db.blogPost.findUnique({
-      where: { id: params.id }
+      where: { id }
     });
 
     if (!post) {
@@ -30,13 +31,14 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
     
     const updatedPost = await db.blogPost.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         ...body,
         updatedAt: new Date()
@@ -58,11 +60,12 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     await db.blogPost.delete({
-      where: { id: params.id }
+      where: { id }
     });
 
     // Revalidate blog cache when a post is deleted
