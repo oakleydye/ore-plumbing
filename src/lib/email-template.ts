@@ -6,6 +6,7 @@ interface ContactEmailProps {
   message: string;
   urgency: string;
   submissionTime: string;
+  requestId?: string;
 }
 
 export function generateContactEmail({
@@ -15,7 +16,8 @@ export function generateContactEmail({
   service,
   message,
   urgency,
-  submissionTime
+  submissionTime,
+  requestId
 }: ContactEmailProps): string {
   const urgencyLabels = {
     emergency: '🚨 EMERGENCY',
@@ -54,6 +56,7 @@ export function generateContactEmail({
       <div style="background-color: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0; font-size: 14px; color: #6b7280;">
         <p><strong>Submission Time:</strong> ${submissionTime}</p>
         <p><strong>Source:</strong> Ore Plumbing Website Contact Form</p>
+        ${requestId ? `<p><strong>Request ID:</strong> ${requestId}</p>` : `<p style="color: #dc2626;"><strong>Note:</strong> Database save failed - this request was not saved to the admin panel</p>`}
       </div>
 
       ${isHighPriority ? `
