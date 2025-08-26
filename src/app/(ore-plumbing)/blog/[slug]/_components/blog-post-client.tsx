@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface BlogPostData {
   id: string;
@@ -34,18 +36,9 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
     });
   };
 
-  const formatContent = (content: string) => {
-    // Basic content formatting - split by paragraphs
-    return content.split('\n\n').map((paragraph, index) => (
-      <p key={index} className="mb-4 text-gray-700 leading-relaxed">
-        {paragraph}
-      </p>
-    ));
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-15">
         {/* Back to Blog Button */}
         <div className="mb-8">
           <Button asChild variant="outline" className="gap-2">
@@ -108,8 +101,55 @@ export default function BlogPostClient({ post }: BlogPostClientProps) {
             )}
 
             {/* Content */}
-            <div className="prose prose-lg max-w-none">
-              {formatContent(post.content)}
+            <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-900">
+              <ReactMarkdown 
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  // Custom styling for different markdown elements
+                  h1: ({ children }) => <h1 className="text-2xl font-bold mb-4 text-gray-900">{children}</h1>,
+                  h2: ({ children }) => <h2 className="text-xl font-semibold mb-3 text-gray-900">{children}</h2>,
+                  h3: ({ children }) => <h3 className="text-lg font-semibold mb-2 text-gray-900">{children}</h3>,
+                  p: ({ children }) => <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>,
+                  ul: ({ children }) => <ul className="mb-4 ml-6 space-y-2 list-disc">{children}</ul>,
+                  ol: ({ children }) => <ol className="mb-4 ml-6 space-y-2 list-decimal">{children}</ol>,
+                  li: ({ children }) => <li className="text-gray-700">{children}</li>,
+                  blockquote: ({ children }) => (
+                    <blockquote className="border-l-4 border-blue-400 pl-4 py-2 my-4 bg-blue-50 italic text-blue-800">
+                      {children}
+                    </blockquote>
+                  ),
+                  code: ({ children }) => (
+                    <code className="bg-gray-100 px-1 py-0.5 rounded text-sm font-mono text-gray-800">
+                      {children}
+                    </code>
+                  ),
+                  pre: ({ children }) => (
+                    <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto my-4 text-sm">
+                      {children}
+                    </pre>
+                  ),
+                  a: ({ href, children }) => (
+                    <a href={href} className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">
+                      {children}
+                    </a>
+                  ),
+                  strong: ({ children }) => <strong className="font-semibold text-gray-900">{children}</strong>,
+                  em: ({ children }) => <em className="italic text-gray-700">{children}</em>,
+                  table: ({ children }) => (
+                    <div className="overflow-x-auto my-4">
+                      <table className="min-w-full border border-gray-300">{children}</table>
+                    </div>
+                  ),
+                  thead: ({ children }) => <thead className="bg-gray-50">{children}</thead>,
+                  tbody: ({ children }) => <tbody>{children}</tbody>,
+                  tr: ({ children }) => <tr className="border-b border-gray-200">{children}</tr>,
+                  th: ({ children }) => <th className="px-4 py-2 text-left font-semibold text-gray-900 border-r border-gray-300 last:border-r-0">{children}</th>,
+                  td: ({ children }) => <td className="px-4 py-2 text-gray-700 border-r border-gray-300 last:border-r-0">{children}</td>,
+                  hr: () => <hr className="my-8 border-t-2 border-gray-300" />,
+                }}
+              >
+                {post.content}
+              </ReactMarkdown>
             </div>
 
             {/* Call to Action */}
