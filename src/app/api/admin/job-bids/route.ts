@@ -28,7 +28,8 @@ export async function POST(request: NextRequest) {
       description,
       location,
       urgency,
-      budget
+      budget,
+      status
     } = body;
 
     const jobBid = await db.jobBid.create({
@@ -41,7 +42,7 @@ export async function POST(request: NextRequest) {
         location,
         urgency: urgency || 'normal',
         budget: budget || null,
-        status: 'pending'
+        status: status || 'pending'
       }
     });
 

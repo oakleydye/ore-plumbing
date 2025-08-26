@@ -30,10 +30,22 @@ export default function JobBidsPage() {
   const [bids, setBids] = useState<JobBid[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedBid, setSelectedBid] = useState<JobBid | null>(null);
+  const [showCreateForm, setShowCreateForm] = useState(false);
   const [quoteForm, setQuoteForm] = useState({
     quote: '',
     notes: '',
     status: 'quoted'
+  });
+  const [createForm, setCreateForm] = useState({
+    customerName: '',
+    customerEmail: '',
+    customerPhone: '',
+    serviceType: '',
+    description: '',
+    location: '',
+    urgency: 'normal',
+    budget: '',
+    status: 'pending'
   });
   const [submitting, setSubmitting] = useState(false);
 
@@ -90,6 +102,53 @@ export default function JobBidsPage() {
     }
   };
 
+  const handleCreateBid = async () => {
+    if (!createForm.customerName.trim() || !createForm.customerEmail.trim() || !createForm.description.trim()) {
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/admin/job-bids', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customerName: createForm.customerName.trim(),
+          customerEmail: createForm.customerEmail.trim(),
+          customerPhone: createForm.customerPhone.trim() || undefined,
+          serviceType: createForm.serviceType || 'Other',
+          description: createForm.description.trim(),
+          location: createForm.location.trim() || 'Logan, Utah',
+          urgency: createForm.urgency,
+          budget: createForm.budget.trim() || undefined,
+          status: createForm.status
+        })
+      });
+
+      if (res.ok) {
+        await fetchBids();
+        setShowCreateForm(false);
+        setCreateForm({
+          customerName: '',
+          customerEmail: '',
+          customerPhone: '',
+          serviceType: '',
+          description: '',
+          location: '',
+          urgency: 'normal',
+          budget: '',
+          status: 'pending'
+        });
+      } else {
+        console.error('Error creating job bid');
+      }
+    } catch (error) {
+      console.error('Error creating job bid:', error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   const getUrgencyColor = (urgency: string) => {
     switch (urgency) {
       case 'emergency': return 'bg-red-100 text-red-800';
@@ -134,9 +193,14 @@ export default function JobBidsPage() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-900">Job Bids</h1>
-        <Button onClick={fetchBids} variant="outline">
-          Refresh
-        </Button>
+        <div className="flex gap-2">
+          <Button onClick={() => setShowCreateForm(true)}>
+            Create New Bid
+          </Button>
+          <Button onClick={fetchBids} variant="outline">
+            Refresh
+          </Button>
+        </div>
       </div>
 
       <div className="space-y-4">
@@ -335,6 +399,175 @@ export default function JobBidsPage() {
                   disabled={!quoteForm.quote.trim() || submitting}
                 >
                   {submitting ? 'Saving...' : 'Save Quote'}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* Create New Bid Modal */}
+      {showCreateForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <CardHeader>
+              <CardTitle>Create New Job Bid</CardTitle>
+              <CardDescription>
+                Add a new job bid to track projects from phone calls, referrals, or other sources
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {/* Customer Information */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="customerName">Customer Name *</Label>
+                  <Input
+                    id="customerName"
+                    value={createForm.customerName}
+                    onChange={(e) => setCreateForm({ ...createForm, customerName: e.target.value })}
+                    placeholder="John Smith"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="customerEmail">Email *</Label>
+                  <Input
+                    id="customerEmail"
+                    type="email"
+                    value={createForm.customerEmail}
+                    onChange={(e) => setCreateForm({ ...createForm, customerEmail: e.target.value })}
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="customerPhone">Phone</Label>
+                  <Input
+                    id="customerPhone"
+                    value={createForm.customerPhone}
+                    onChange={(e) => setCreateForm({ ...createForm, customerPhone: e.target.value })}
+                    placeholder="(435) 555-0123"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="location">Location</Label>
+                  <Input
+                    id="location"
+                    value={createForm.location}
+                    onChange={(e) => setCreateForm({ ...createForm, location: e.target.value })}
+                    placeholder="Logan, Utah"
+                  />
+                </div>
+              </div>
+
+              {/* Project Information */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="serviceType">Service Type</Label>
+                  <Select
+                    value={createForm.serviceType}
+                    onValueChange={(value) => setCreateForm({ ...createForm, serviceType: value })}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select service type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="emergency-repairs">Emergency Repairs</SelectItem>
+                      <SelectItem value="residential-new-install">New Residential Installation</SelectItem>
+                      <SelectItem value="commercial">Commercial Plumbing</SelectItem>
+                      <SelectItem value="bathroom-remodeling">Bathroom Remodeling</SelectItem>
+                      <SelectItem value="water-softeners">Water Softener Installation</SelectItem>
+                      <SelectItem value="water-heater">Water Heater Services</SelectItem>
+                      <SelectItem value="pipe-repair">Pipe Repair & Installation</SelectItem>
+                      <SelectItem value="drain-cleaning">Drain Cleaning</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="urgency">Urgency</Label>
+                  <Select
+                    value={createForm.urgency}
+                    onValueChange={(value) => setCreateForm({ ...createForm, urgency: value })}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="emergency">Emergency</SelectItem>
+                      <SelectItem value="urgent">Urgent</SelectItem>
+                      <SelectItem value="normal">Normal</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="description">Project Description *</Label>
+                <Textarea
+                  id="description"
+                  value={createForm.description}
+                  onChange={(e) => setCreateForm({ ...createForm, description: e.target.value })}
+                  placeholder="Describe the plumbing work needed..."
+                  rows={3}
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="budget">Budget (optional)</Label>
+                  <Input
+                    id="budget"
+                    value={createForm.budget}
+                    onChange={(e) => setCreateForm({ ...createForm, budget: e.target.value })}
+                    placeholder="$500-1000"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="status">Initial Status</Label>
+                  <Select
+                    value={createForm.status}
+                    onValueChange={(value) => setCreateForm({ ...createForm, status: value })}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="pending">Pending</SelectItem>
+                      <SelectItem value="quoted">Quoted</SelectItem>
+                      <SelectItem value="accepted">Accepted</SelectItem>
+                      <SelectItem value="completed">Completed</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              
+              <div className="flex gap-2 justify-end pt-4">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setShowCreateForm(false);
+                    setCreateForm({
+                      customerName: '',
+                      customerEmail: '',
+                      customerPhone: '',
+                      serviceType: '',
+                      description: '',
+                      location: '',
+                      urgency: 'normal',
+                      budget: '',
+                      status: 'pending'
+                    });
+                  }}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={handleCreateBid}
+                  disabled={!createForm.customerName.trim() || !createForm.customerEmail.trim() || !createForm.description.trim() || submitting}
+                >
+                  {submitting ? 'Creating...' : 'Create Bid'}
                 </Button>
               </div>
             </CardContent>
