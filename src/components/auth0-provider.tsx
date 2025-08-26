@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface User {
   email?: string;
@@ -30,7 +30,7 @@ export function Auth0Provider({ children }: { children: React.ReactNode }) {
 
   const checkAuth = async () => {
     try {
-      const response = await fetch('/api/auth/me');
+      const response = await fetch("/api/auth/me");
       if (response.ok) {
         const userData = await response.json();
         setUser(userData);
@@ -43,12 +43,12 @@ export function Auth0Provider({ children }: { children: React.ReactNode }) {
   };
 
   const loginWithRedirect = () => {
-    window.location.href = '/api/auth/login';
+    window.location.href = "/api/auth/login";
   };
 
   const logout = () => {
     setUser(null);
-    window.location.href = '/api/auth/logout';
+    window.location.href = "/api/auth/logout";
   };
 
   const value = {
@@ -56,7 +56,7 @@ export function Auth0Provider({ children }: { children: React.ReactNode }) {
     isLoading,
     error,
     loginWithRedirect,
-    logout
+    logout,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
@@ -65,7 +65,7 @@ export function Auth0Provider({ children }: { children: React.ReactNode }) {
 export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an Auth0Provider');
+    throw new Error("useAuth must be used within an Auth0Provider");
   }
   return context;
 }
