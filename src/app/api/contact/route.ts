@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { generateContactEmail } from '@/lib/email-template';
+import { db } from '@/lib/db';
 import type { ContactFormData, ContactFormResponse } from '@/types/contact';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -33,6 +34,27 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactFo
       timeStyle: 'short'
     });
 
+    // Try to save to database first, but don't fail if this doesn't work
+    let contactRequest;
+    let dbSaveSuccessful = false;
+    try {
+      contactRequest = await db.contactRequest.create({
+        data: {
+          name,
+          email,
+          phone: phone || null,
+          service: service || null,
+          message,
+          urgency,
+          status: 'pending'
+        }
+      });
+      dbSaveSuccessful = true;
+    } catch (dbError) {
+      console.error('Database save failed, but continuing with email:', dbError);
+      // Continue to email sending - we don't want to lose business
+    }
+
     // Generate email HTML
     const emailHtml = generateContactEmail({
       name,
@@ -41,29 +63,84 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactFo
       service,
       message,
       urgency,
-      submissionTime
+      submissionTime,
+      requestId: contactRequest?.id
     });
 
+    // Add contact to Resend audience (for email list)
+    let audienceAddSuccessful = false;
+    if (process.env.RESEND_AUDIENCE_ID) {
+      try {
+        await resend.contacts.create({
+          email,
+          firstName: name.split(' ')[0], // Extract first name
+          lastName: name.split(' ').slice(1).join(' ') || '', // Extract last name if available
+          audienceId: process.env.RESEND_AUDIENCE_ID,
+        });
+        audienceAddSuccessful = true;
+        console.log(`Successfully added ${email} to Resend audience`);
+      } catch (audienceError) {
+        console.error('Failed to add contact to Resend audience:', audienceError);
+        // Don't fail the entire request if audience addition fails
+      }
+    }
+
     // Send email to the plumber
-    const { data, error } = await resend.emails.send({
-      from: 'Ore Plumbing Website <noreply@oreplumbing.com>',
-      to: ['ore.plumbing@gmail.com'],
-      subject: `New Contact Form Submission - ${urgencyLabel}`,
-      html: emailHtml,
-    });
+    let emailResult;
+    try {
+      emailResult = await resend.emails.send({
+        from: 'Ore Plumbing Website <noreply@oreplumbing.com>',
+        to: ['oakley.dye@gmail.com'],
+        subject: `New Contact Form Submission - ${urgencyLabel}`,
+        html: emailHtml,
+      });
+    } catch (emailError) {
+      console.error('Email sending error:', emailError);
+      // Email failed but we still have the request in the database (if it saved)
+      if (dbSaveSuccessful && contactRequest) {
+        return NextResponse.json({
+          success: true,
+          message: 'Contact request saved successfully. We will respond to your request soon.',
+          id: contactRequest.id
+        });
+      } else {
+        // Both database and email failed - this is a critical error
+        return NextResponse.json(
+          { success: false, message: 'Failed to process your request. Please call us directly at (435) 890-3316.', error: 'Service unavailable' },
+          { status: 500 }
+        );
+      }
+    }
+
+    const { data, error } = emailResult;
 
     if (error) {
       console.error('Resend error:', error);
-      return NextResponse.json(
-        { success: false, message: 'Failed to send email', error: 'Failed to send email' },
-        { status: 500 }
-      );
+      // Even if email fails, we've saved to database (if successful), so this could be a partial success
+      if (dbSaveSuccessful && contactRequest) {
+        return NextResponse.json({
+          success: true,
+          message: 'Contact request saved but email notification failed. We will still respond to your request.',
+          id: contactRequest.id
+        });
+      } else {
+        // Both database and email failed - this is a critical error
+        return NextResponse.json(
+          { success: false, message: 'Failed to process your request. Please call us directly at (435) 890-3316.', error: 'Service unavailable' },
+          { status: 500 }
+        );
+      }
     }
+
+    // Success case - determine response based on what worked
+    const responseMessage = dbSaveSuccessful 
+      ? 'Contact form submitted successfully'
+      : 'Your message was sent successfully. We will respond soon.';
 
     return NextResponse.json({
       success: true,
-      message: 'Contact form submitted successfully',
-      id: data?.id
+      message: responseMessage,
+      id: contactRequest?.id
     });
 
   } catch (error) {

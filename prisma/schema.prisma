@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ContactRequest {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  service   String?
+  message   String
+  urgency   String   @default("normal")
+  status    String   @default("pending") // pending, responded, closed
+  response  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model JobPhoto {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  beforeUrl   String
+  afterUrl    String
+  serviceType String
+  location    String?
+  isPublic    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String
+  excerpt     String?
+  featuredImage String?
+  published   Boolean  @default(false)
+  seoTitle    String?
+  seoDescription String?
+  tags        String?  // Comma-separated tag strings
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model JobBid {
+  id          String   @id @default(cuid())
+  customerName String
+  customerEmail String
+  customerPhone String?
+  serviceType String
+  description String
+  location    String
+  urgency     String   @default("normal")
+  budget      String?
+  status      String   @default("pending") // pending, quoted, accepted, declined, completed
+  quote       String?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  customerName String
+  customerEmail String?
+  rating      Int      // 1-5 stars
+  title       String?
+  content     String
+  serviceType String?
+  jobDate     DateTime?
+  approved    Boolean  @default(false)
+  featured    Boolean  @default(false)
+  response    String?  // Business response to review
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

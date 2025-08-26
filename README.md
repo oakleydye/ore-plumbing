@@ -33,7 +33,14 @@ The contact form uses [Resend](https://resend.com) to send email notifications. 
    ```
    RESEND_API_KEY=your_actual_api_key_here
    ```
-4. Update the email addresses in `src/app/api/contact/route.ts`:
+4. (Optional) Create an audience for email list collection:
+   - Go to your Resend dashboard > Audiences
+   - Create a new audience (e.g., "General Contacts")
+   - Copy the audience ID and add it to `.env.local`:
+   ```
+   RESEND_AUDIENCE_ID=your_audience_id_here
+   ```
+5. Update the email addresses in `src/app/api/contact/route.ts`:
    - Change the `from` email to your verified domain
    - Update the `to` email address to where you want to receive notifications
 
@@ -74,6 +81,7 @@ Once you have set up your Resend API key, you can test the contact form function
 ### Required Environment Variables
 
 - `RESEND_API_KEY`: Your Resend API key for sending emails
+- `RESEND_AUDIENCE_ID`: (Optional) Your Resend audience ID for collecting email subscribers
 
 ### Email Settings
 

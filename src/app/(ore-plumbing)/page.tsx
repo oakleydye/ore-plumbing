@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Hero from "./_components/hero";
 import About from "./_components/about";
 import ContactForm from "../_components/contact-form";
+import RecentBlogPosts from "../_components/recent-blog-posts";
 import { generateMetadata, getLocalSEOKeywords } from "@/components/seo/metadata";
 import { FAQPageSchema } from "@/components/seo/structured-data";
 
@@ -45,6 +46,7 @@ export default function Home() {
       <FAQPageSchema faqs={faqs} />
       <Hero />
       <About />
+      <RecentBlogPosts limit={3} showViewAll={true} />
       <ContactForm />
     </Fragment>
   );
