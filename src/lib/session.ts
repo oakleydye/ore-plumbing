@@ -20,7 +20,21 @@ export interface User {
   picture?: string;
 }
 
-const SECRET_KEY = new TextEncoder().encode(process.env.SESSION_SECRET);
+const SESSION_SECRET = process.env.SESSION_SECRET;
+
+if (!SESSION_SECRET) {
+  throw new Error(
+    'SESSION_SECRET environment variable is required but not set. Please add SESSION_SECRET to your .env.local file.'
+  );
+}
+
+if (SESSION_SECRET.length < 32) {
+  throw new Error(
+    'SESSION_SECRET must be at least 32 characters long for security. Please generate a stronger secret.'
+  );
+}
+
+const SECRET_KEY = new TextEncoder().encode(SESSION_SECRET);
 
 const COOKIE_NAME = "auth-session";
 const SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours
