@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { Providers } from "@/utils/providers";
+import { Auth0Provider } from "@/components/auth0-provider";
+import { AdminHeader } from "./_components/admin-header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,93 +30,73 @@ export default function AdminLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="min-h-screen bg-gray-50">
-          {/* Admin Header */}
-          <header className="bg-white shadow-sm border-b">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between items-center h-16">
-                <div className="flex items-center">
-                  <h1 className="text-xl font-semibold text-gray-900">
-                    Ore Plumbing Admin
-                  </h1>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <span className="text-sm text-gray-700">Welcome, Admin</span>
-                  <a
-                    href="/"
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-                  >
-                    Back to Site
-                  </a>
-                </div>
-              </div>
-            </div>
-          </header>
+          <Auth0Provider>
+            <Providers>
+              <AdminHeader />
 
-          {/* Admin Sidebar and Content */}
-          <div className="flex">
-            {/* Sidebar */}
-            <nav className="w-64 bg-white shadow-sm min-h-screen border-r">
-              <div className="p-4">
-                <ul className="space-y-2">
-                  <li>
-                    <a
-                      href="/admin"
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
-                    >
-                      Dashboard
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/admin/contact-requests"
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
-                    >
-                      Contact Requests
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/admin/job-photos"
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
-                    >
-                      Job Photos
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/admin/blog"
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
-                    >
-                      Blog Posts
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/admin/bids"
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
-                    >
-                      Job Bids
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/admin/reviews"
-                      className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
-                    >
-                      Reviews
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
+              {/* Admin Sidebar and Content */}
+              <div className="flex">
+                {/* Sidebar */}
+                <nav className="w-64 bg-white shadow-sm min-h-screen border-r">
+                  <div className="p-4">
+                    <ul className="space-y-2">
+                      <li>
+                        <a
+                          href="/admin"
+                          className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
+                        >
+                          Dashboard
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/admin/contact-requests"
+                          className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
+                        >
+                          Contact Requests
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/admin/job-photos"
+                          className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
+                        >
+                          Job Photos
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/admin/blog"
+                          className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
+                        >
+                          Blog Posts
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/admin/bids"
+                          className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
+                        >
+                          Job Bids
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="/admin/reviews"
+                          className="block px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100"
+                        >
+                          Reviews
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
 
-            {/* Main Content */}
-            <main className="flex-1 p-6">
-              <Providers>
-                {children}
-              </Providers>
-            </main>
-          </div>
+                {/* Main Content */}
+                <main className="flex-1 p-6">{children}</main>
+              </div>
+            </Providers>
+          </Auth0Provider>
         </div>
       </body>
     </html>
