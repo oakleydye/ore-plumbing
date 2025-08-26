@@ -26,6 +26,7 @@ export default function ContactRequestsPage() {
   const [selectedRequest, setSelectedRequest] = useState<ContactRequest | null>(null);
   const [response, setResponse] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [emailStatus, setEmailStatus] = useState<{ success: boolean; message: string } | null>(null);
 
   useEffect(() => {
     fetchRequests();
@@ -49,6 +50,8 @@ export default function ContactRequestsPage() {
     if (!response.trim()) return;
 
     setSubmitting(true);
+    setEmailStatus(null);
+    
     try {
       const res = await fetch(`/api/admin/contact-requests/${id}`, {
         method: 'PATCH',
@@ -60,12 +63,45 @@ export default function ContactRequestsPage() {
       });
 
       if (res.ok) {
+        const data = await res.json();
         await fetchRequests();
-        setSelectedRequest(null);
-        setResponse('');
+        
+        // Show email status feedback
+        if (data.emailSent === false) {
+          setEmailStatus({
+            success: false,
+            message: data.emailError || 'Failed to send email to customer'
+          });
+        } else if (data.emailSent === true) {
+          setEmailStatus({
+            success: true,
+            message: 'Response sent successfully to customer email'
+          });
+        } else {
+          setEmailStatus({
+            success: true,
+            message: 'Response saved successfully'
+          });
+        }
+        
+        // Close modal after a brief delay to show the status
+        setTimeout(() => {
+          setSelectedRequest(null);
+          setResponse('');
+          setEmailStatus(null);
+        }, 2000);
+      } else {
+        setEmailStatus({
+          success: false,
+          message: 'Failed to send response'
+        });
       }
     } catch (error) {
       console.error('Error responding to request:', error);
+      setEmailStatus({
+        success: false,
+        message: 'Error sending response'
+      });
     } finally {
       setSubmitting(false);
     }
@@ -193,7 +229,7 @@ export default function ContactRequestsPage() {
             <CardHeader>
               <CardTitle>Respond to {selectedRequest.name}</CardTitle>
               <CardDescription>
-                Send a response to their inquiry
+                Send an email response to {selectedRequest.email}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -209,13 +245,25 @@ export default function ContactRequestsPage() {
                 rows={4}
               />
               
+              {emailStatus && (
+                <div className={`p-3 rounded-md text-sm ${
+                  emailStatus.success 
+                    ? 'bg-green-100 text-green-800 border border-green-200' 
+                    : 'bg-red-100 text-red-800 border border-red-200'
+                }`}>
+                  {emailStatus.message}
+                </div>
+              )}
+              
               <div className="flex gap-2 justify-end">
                 <Button
                   variant="outline"
                   onClick={() => {
                     setSelectedRequest(null);
                     setResponse('');
+                    setEmailStatus(null);
                   }}
+                  disabled={submitting}
                 >
                   Cancel
                 </Button>
@@ -223,7 +271,7 @@ export default function ContactRequestsPage() {
                   onClick={() => handleRespond(selectedRequest.id)}
                   disabled={!response.trim() || submitting}
                 >
-                  {submitting ? 'Sending...' : 'Send Response'}
+                  {submitting ? 'Sending Email...' : 'Send Response'}
                 </Button>
               </div>
             </CardContent>

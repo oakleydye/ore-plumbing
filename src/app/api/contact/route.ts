@@ -67,12 +67,30 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactFo
       requestId: contactRequest?.id
     });
 
+    // Add contact to Resend audience (for email list)
+    let audienceAddSuccessful = false;
+    if (process.env.RESEND_AUDIENCE_ID) {
+      try {
+        await resend.contacts.create({
+          email,
+          firstName: name.split(' ')[0], // Extract first name
+          lastName: name.split(' ').slice(1).join(' ') || '', // Extract last name if available
+          audienceId: process.env.RESEND_AUDIENCE_ID,
+        });
+        audienceAddSuccessful = true;
+        console.log(`Successfully added ${email} to Resend audience`);
+      } catch (audienceError) {
+        console.error('Failed to add contact to Resend audience:', audienceError);
+        // Don't fail the entire request if audience addition fails
+      }
+    }
+
     // Send email to the plumber
     let emailResult;
     try {
       emailResult = await resend.emails.send({
         from: 'Ore Plumbing Website <noreply@oreplumbing.com>',
-        to: ['ore.plumbing@gmail.com'],
+        to: ['oakley.dye@gmail.com'],
         subject: `New Contact Form Submission - ${urgencyLabel}`,
         html: emailHtml,
       });
