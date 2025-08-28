@@ -90,7 +90,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactFo
     try {
       emailResult = await resend.emails.send({
         from: 'Ore Plumbing Website <noreply@oreplumbing.com>',
-        to: ['oakley.dye@gmail.com'],
+        to: ['ore.plumbing@gmail.com'],
         subject: `New Contact Form Submission - ${urgencyLabel}`,
         html: emailHtml,
       });
