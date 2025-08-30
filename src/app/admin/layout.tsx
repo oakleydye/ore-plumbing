@@ -24,7 +24,7 @@ export default function AdminLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>Ore Plumbing Admin</title>
+        <title>O.R.E. Plumbing Admin</title>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
