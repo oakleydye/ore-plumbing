@@ -99,7 +99,7 @@ export default function JobPhotosPage() {
           <Button onClick={fetchPhotos} variant="outline">
             Refresh
           </Button>
-          <Button asChild>
+          <Button asChild className="bg-slate-700 hover:bg-slate-800 text-white">
             <a href="/admin/job-photos/upload">Upload Photos</a>
           </Button>
         </div>
@@ -138,7 +138,7 @@ export default function JobPhotosPage() {
             <CardContent className="p-4">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="font-semibold text-lg">{photo.title}</h3>
-                <Badge variant={photo.isPublic ? "default" : "secondary"}>
+                <Badge variant={photo.isPublic ? "default" : "secondary"} className={photo.isPublic ? "bg-emerald-100 text-emerald-800 border border-emerald-200" : ""}>
                   {photo.isPublic ? "Public" : "Private"}
                 </Badge>
               </div>
@@ -183,7 +183,7 @@ export default function JobPhotosPage() {
             <Card>
               <CardContent className="text-center py-12">
                 <p className="text-gray-500 mb-4">No job photos uploaded yet.</p>
-                <Button asChild>
+                <Button asChild className="bg-slate-700 hover:bg-slate-800 text-white">
                   <a href="/admin/job-photos/upload">Upload Your First Photos</a>
                 </Button>
               </CardContent>

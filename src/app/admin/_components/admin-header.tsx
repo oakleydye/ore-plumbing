@@ -30,7 +30,7 @@ export function AdminHeader() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <h1 className="text-xl font-semibold text-gray-900">
-                Ore Plumbing Admin
+                O.R.E. Plumbing Admin
               </h1>
             </div>
             <div className="flex items-center space-x-4">
@@ -49,7 +49,7 @@ export function AdminHeader() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <h1 className="text-xl font-semibold text-gray-900">
-              Ore Plumbing Admin
+              O.R.E. Plumbing Admin
             </h1>
           </div>
           <div className="flex items-center space-x-4">
@@ -59,7 +59,7 @@ export function AdminHeader() {
             <button
               onClick={handleLogout}
               disabled={isLoggingOut}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+              className="bg-slate-700 hover:bg-slate-800 disabled:bg-slate-400 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm"
             >
               {isLoggingOut ? "Logging out..." : "Logout"}
             </button>

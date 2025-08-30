@@ -71,7 +71,7 @@ export default function AdminDashboard() {
             <CardDescription>New messages from customers</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-blue-600">{stats.pendingContacts}</div>
+            <div className="text-2xl font-bold text-slate-700">{stats.pendingContacts}</div>
           </CardContent>
         </Card>
 
@@ -81,7 +81,7 @@ export default function AdminDashboard() {
             <CardDescription>Quotes waiting for response</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-yellow-600">{stats.pendingBids}</div>
+            <div className="text-2xl font-bold text-amber-600">{stats.pendingBids}</div>
           </CardContent>
         </Card>
 
@@ -91,7 +91,7 @@ export default function AdminDashboard() {
             <CardDescription>Reviews awaiting approval</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-green-600">{stats.pendingReviews}</div>
+            <div className="text-2xl font-bold text-emerald-600">{stats.pendingReviews}</div>
           </CardContent>
         </Card>
 
@@ -101,7 +101,7 @@ export default function AdminDashboard() {
             <CardDescription>Before/after photos uploaded</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-purple-600">{stats.totalPhotos}</div>
+            <div className="text-2xl font-bold text-violet-600">{stats.totalPhotos}</div>
           </CardContent>
         </Card>
 
@@ -111,7 +111,7 @@ export default function AdminDashboard() {
             <CardDescription>Active blog content</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-indigo-600">{stats.publishedPosts}</div>
+            <div className="text-2xl font-bold text-cyan-600">{stats.publishedPosts}</div>
           </CardContent>
         </Card>
       </div>
@@ -125,19 +125,19 @@ export default function AdminDashboard() {
           <CardContent className="space-y-3">
             <a
               href="/admin/job-photos/upload"
-              className="block w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-center transition-colors"
+              className="block w-full bg-slate-700 hover:bg-slate-800 text-white px-4 py-2 rounded-lg text-center transition-colors font-medium shadow-sm"
             >
               Upload Job Photos
             </a>
             <a
               href="/admin/blog/new"
-              className="block w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-center transition-colors"
+              className="block w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-center transition-colors font-medium shadow-sm"
             >
               Create Blog Post
             </a>
             <a
               href="/admin/contact-requests"
-              className="block w-full bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded-md text-center transition-colors"
+              className="block w-full bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg text-center transition-colors font-medium shadow-sm"
             >
               Review Messages
             </a>

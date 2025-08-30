@@ -151,20 +151,20 @@ export default function JobBidsPage() {
 
   const getUrgencyColor = (urgency: string) => {
     switch (urgency) {
-      case 'emergency': return 'bg-red-100 text-red-800';
-      case 'urgent': return 'bg-orange-100 text-orange-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'emergency': return 'bg-red-100 text-red-800 border border-red-200';
+      case 'urgent': return 'bg-amber-100 text-amber-800 border border-amber-200';
+      default: return 'bg-slate-100 text-slate-800 border border-slate-200';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'quoted': return 'bg-blue-100 text-blue-800';
-      case 'accepted': return 'bg-green-100 text-green-800';
-      case 'declined': return 'bg-red-100 text-red-800';
-      case 'completed': return 'bg-purple-100 text-purple-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'pending': return 'bg-amber-100 text-amber-800 border border-amber-200';
+      case 'quoted': return 'bg-cyan-100 text-cyan-800 border border-cyan-200';
+      case 'accepted': return 'bg-emerald-100 text-emerald-800 border border-emerald-200';
+      case 'declined': return 'bg-red-100 text-red-800 border border-red-200';
+      case 'completed': return 'bg-violet-100 text-violet-800 border border-violet-200';
+      default: return 'bg-slate-100 text-slate-800 border border-slate-200';
     }
   };
 
@@ -194,7 +194,7 @@ export default function JobBidsPage() {
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-900">Job Bids</h1>
         <div className="flex gap-2">
-          <Button onClick={() => setShowCreateForm(true)}>
+          <Button onClick={() => setShowCreateForm(true)} className="bg-slate-700 hover:bg-slate-800 text-white">
             Create New Bid
           </Button>
           <Button onClick={fetchBids} variant="outline">
@@ -240,11 +240,11 @@ export default function JobBidsPage() {
               )}
 
               {bid.quote && (
-                <div className="bg-blue-50 p-3 rounded-md">
-                  <span className="text-sm font-medium text-blue-800">Your Quote: </span>
-                  <p className="text-sm text-blue-700 mt-1">{bid.quote}</p>
+                <div className="bg-cyan-50 p-3 rounded-lg border border-cyan-200">
+                  <span className="text-sm font-medium text-cyan-800">Your Quote: </span>
+                  <p className="text-sm text-cyan-700 mt-1">{bid.quote}</p>
                   {bid.notes && (
-                    <p className="text-xs text-blue-600 mt-2"><strong>Notes:</strong> {bid.notes}</p>
+                    <p className="text-xs text-cyan-600 mt-2"><strong>Notes:</strong> {bid.notes}</p>
                   )}
                 </div>
               )}
@@ -265,6 +265,7 @@ export default function JobBidsPage() {
                           status: 'quoted'
                         });
                       }}
+                      className="bg-slate-700 hover:bg-slate-800 text-white"
                     >
                       Send Quote
                     </Button>
@@ -397,6 +398,7 @@ export default function JobBidsPage() {
                 <Button
                   onClick={handleSubmitQuote}
                   disabled={!quoteForm.quote.trim() || submitting}
+                  className="bg-slate-700 hover:bg-slate-800 text-white"
                 >
                   {submitting ? 'Saving...' : 'Save Quote'}
                 </Button>
@@ -566,6 +568,7 @@ export default function JobBidsPage() {
                 <Button
                   onClick={handleCreateBid}
                   disabled={!createForm.customerName.trim() || !createForm.customerEmail.trim() || !createForm.description.trim() || submitting}
+                  className="bg-slate-700 hover:bg-slate-800 text-white"
                 >
                   {submitting ? 'Creating...' : 'Create Bid'}
                 </Button>

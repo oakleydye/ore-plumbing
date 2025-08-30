@@ -27,6 +27,7 @@ export default function ContactRequestsPage() {
   const [response, setResponse] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [emailStatus, setEmailStatus] = useState<{ success: boolean; message: string } | null>(null);
+  const [showArchived, setShowArchived] = useState(false);
 
   useEffect(() => {
     fetchRequests();
@@ -107,21 +108,40 @@ export default function ContactRequestsPage() {
     }
   };
 
+  const handleArchive = async (id: string) => {
+    try {
+      const res = await fetch(`/api/admin/contact-requests/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          status: 'archived'
+        })
+      });
+
+      if (res.ok) {
+        await fetchRequests();
+      }
+    } catch (error) {
+      console.error('Error archiving request:', error);
+    }
+  };
+
   const getUrgencyColor = (urgency: string) => {
     switch (urgency) {
-      case 'emergency': return 'bg-red-100 text-red-800';
-      case 'urgent': return 'bg-orange-100 text-orange-800';
-      case 'quote': return 'bg-blue-100 text-blue-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'emergency': return 'bg-red-100 text-red-800 border border-red-200';
+      case 'urgent': return 'bg-amber-100 text-amber-800 border border-amber-200';
+      case 'quote': return 'bg-cyan-100 text-cyan-800 border border-cyan-200';
+      default: return 'bg-slate-100 text-slate-800 border border-slate-200';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'responded': return 'bg-green-100 text-green-800';
-      case 'closed': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'pending': return 'bg-amber-100 text-amber-800 border border-amber-200';
+      case 'responded': return 'bg-emerald-100 text-emerald-800 border border-emerald-200';
+      case 'closed': return 'bg-slate-100 text-slate-800 border border-slate-200';
+      case 'archived': return 'bg-gray-100 text-gray-700 border border-gray-200';
+      default: return 'bg-slate-100 text-slate-800 border border-slate-200';
     }
   };
 
@@ -150,13 +170,24 @@ export default function ContactRequestsPage() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-900">Contact Requests</h1>
-        <Button onClick={fetchRequests} variant="outline">
-          Refresh
-        </Button>
+        <div className="flex gap-2">
+          <Button 
+            onClick={() => setShowArchived(!showArchived)} 
+            variant="outline"
+            className={showArchived ? "bg-slate-100" : ""}
+          >
+            {showArchived ? 'Hide Archived' : 'Show Archived'}
+          </Button>
+          <Button onClick={fetchRequests} variant="outline">
+            Refresh
+          </Button>
+        </div>
       </div>
 
       <div className="grid gap-6">
-        {requests.map((request) => (
+        {requests
+          .filter(request => showArchived || request.status !== 'archived')
+          .map((request) => (
           <Card key={request.id} className="relative">
             <CardHeader>
               <div className="flex justify-between items-start">
@@ -190,9 +221,9 @@ export default function ContactRequestsPage() {
               </div>
 
               {request.response && (
-                <div className="bg-green-50 p-3 rounded-md">
-                  <span className="text-sm font-medium text-green-800">Your Response: </span>
-                  <p className="text-sm text-green-700 mt-1">{request.response}</p>
+                <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
+                  <span className="text-sm font-medium text-emerald-800">Your Response: </span>
+                  <p className="text-sm text-emerald-700 mt-1">{request.response}</p>
                 </div>
               )}
 
@@ -200,23 +231,38 @@ export default function ContactRequestsPage() {
                 <span className="text-xs text-gray-500">
                   Received: {new Date(request.createdAt).toLocaleString()}
                 </span>
-                {request.status === 'pending' && (
-                  <Button
-                    onClick={() => setSelectedRequest(request)}
-                    size="sm"
-                  >
-                    Respond
-                  </Button>
-                )}
+                <div className="flex gap-2">
+                  {request.status === 'pending' && (
+                    <Button
+                      onClick={() => setSelectedRequest(request)}
+                      size="sm"
+                      className="bg-slate-700 hover:bg-slate-800 text-white"
+                    >
+                      Respond
+                    </Button>
+                  )}
+                  {request.status === 'responded' && (
+                    <Button
+                      onClick={() => handleArchive(request.id)}
+                      size="sm"
+                      variant="outline"
+                      className="text-gray-600 hover:text-gray-800"
+                    >
+                      Archive
+                    </Button>
+                  )}
+                </div>
               </div>
             </CardContent>
           </Card>
         ))}
 
-        {requests.length === 0 && (
+        {requests.filter(request => showArchived || request.status !== 'archived').length === 0 && (
           <Card>
             <CardContent className="text-center py-12">
-              <p className="text-gray-500">No contact requests found.</p>
+              <p className="text-gray-500">
+                {showArchived ? 'No archived contact requests found.' : 'No active contact requests found.'}
+              </p>
             </CardContent>
           </Card>
         )}
@@ -246,9 +292,9 @@ export default function ContactRequestsPage() {
               />
               
               {emailStatus && (
-                <div className={`p-3 rounded-md text-sm ${
+                <div className={`p-3 rounded-lg text-sm ${
                   emailStatus.success 
-                    ? 'bg-green-100 text-green-800 border border-green-200' 
+                    ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' 
                     : 'bg-red-100 text-red-800 border border-red-200'
                 }`}>
                   {emailStatus.message}
@@ -270,6 +316,7 @@ export default function ContactRequestsPage() {
                 <Button
                   onClick={() => handleRespond(selectedRequest.id)}
                   disabled={!response.trim() || submitting}
+                  className="bg-slate-700 hover:bg-slate-800 text-white"
                 >
                   {submitting ? 'Sending Email...' : 'Send Response'}
                 </Button>
