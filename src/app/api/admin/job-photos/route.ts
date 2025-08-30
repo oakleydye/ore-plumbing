@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { v4 as uuidv4 } from 'uuid';
+import { put } from '@vercel/blob';
 
 export async function GET() {
   try {
@@ -39,28 +37,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create uploads directory if it doesn't exist
-    const uploadsDir = join(process.cwd(), 'public', 'uploads', 'job-photos');
-    try {
-      await mkdir(uploadsDir, { recursive: true });
-    } catch (error) {
-      // Directory might already exist
-    }
+    // Upload files to Vercel Blob
+    const beforeFileName = `job-photos/before-${Date.now()}-${beforeImage.name}`;
+    const afterFileName = `job-photos/after-${Date.now()}-${afterImage.name}`;
 
-    // Save files
-    const beforeFileName = `before-${uuidv4()}.${beforeImage.name.split('.').pop()}`;
-    const afterFileName = `after-${uuidv4()}.${afterImage.name.split('.').pop()}`;
-    
-    const beforePath = join(uploadsDir, beforeFileName);
-    const afterPath = join(uploadsDir, afterFileName);
+    const beforeBlob = await put(beforeFileName, beforeImage, {
+      access: 'public',
+    });
 
-    const beforeBytes = await beforeImage.arrayBuffer();
-    const afterBytes = await afterImage.arrayBuffer();
+    const afterBlob = await put(afterFileName, afterImage, {
+      access: 'public',
+    });
 
-    await writeFile(beforePath, Buffer.from(beforeBytes));
-    await writeFile(afterPath, Buffer.from(afterBytes));
-
-    // Save to database
+    // Save to database with blob URLs
     const jobPhoto = await db.jobPhoto.create({
       data: {
         title,
@@ -68,8 +57,8 @@ export async function POST(request: NextRequest) {
         serviceType,
         location: location || null,
         isPublic,
-        beforeUrl: `/uploads/job-photos/${beforeFileName}`,
-        afterUrl: `/uploads/job-photos/${afterFileName}`
+        beforeUrl: beforeBlob.url,
+        afterUrl: afterBlob.url
       }
     });
 

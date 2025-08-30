@@ -146,11 +146,11 @@ export default function ReviewsPage() {
                   </CardDescription>
                 </div>
                 <div className="flex gap-2 ml-4">
-                  <Badge variant={review.approved ? "default" : "secondary"}>
+                  <Badge variant={review.approved ? "default" : "secondary"} className={review.approved ? "bg-emerald-100 text-emerald-800 border border-emerald-200" : ""}>
                     {review.approved ? "Approved" : "Pending"}
                   </Badge>
                   {review.featured && (
-                    <Badge variant="outline" className="bg-yellow-50">
+                    <Badge variant="outline" className="bg-amber-50 text-amber-800 border border-amber-200">
                       Featured
                     </Badge>
                   )}
@@ -171,9 +171,9 @@ export default function ReviewsPage() {
               )}
 
               {review.response && (
-                <div className="bg-blue-50 p-3 rounded-md">
-                  <span className="text-sm font-medium text-blue-800">Your Response: </span>
-                  <p className="text-sm text-blue-700 mt-1">{review.response}</p>
+                <div className="bg-cyan-50 p-3 rounded-lg border border-cyan-200">
+                  <span className="text-sm font-medium text-cyan-800">Your Response: </span>
+                  <p className="text-sm text-cyan-700 mt-1">{review.response}</p>
                 </div>
               )}
 
@@ -258,6 +258,7 @@ export default function ReviewsPage() {
                 <Button
                   onClick={() => handleRespond(selectedReview.id)}
                   disabled={submitting}
+                  className="bg-slate-700 hover:bg-slate-800 text-white"
                 >
                   {submitting ? 'Saving...' : 'Save Response'}
                 </Button>

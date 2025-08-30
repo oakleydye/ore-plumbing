@@ -46,8 +46,8 @@ export default function Home() {
       <FAQPageSchema faqs={faqs} />
       <Hero />
       <About />
-      <RecentBlogPosts limit={3} showViewAll={true} />
       <ContactForm />
+      {/* <RecentBlogPosts limit={3} showViewAll={true} /> */}
     </Fragment>
   );
 }

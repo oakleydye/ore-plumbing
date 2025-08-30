@@ -99,7 +99,7 @@ export default function BlogPage() {
           <Button onClick={fetchPosts} variant="outline">
             Refresh
           </Button>
-          <Button asChild>
+          <Button asChild className="bg-slate-700 hover:bg-slate-800 text-white">
             <a href="/admin/blog/new">Create New Post</a>
           </Button>
         </div>
@@ -117,7 +117,7 @@ export default function BlogPage() {
                   </CardDescription>
                 </div>
                 <div className="flex gap-2 ml-4">
-                  <Badge variant={post.published ? "default" : "secondary"}>
+                  <Badge variant={post.published ? "default" : "secondary"} className={post.published ? "bg-emerald-100 text-emerald-800 border border-emerald-200" : ""}>
                     {post.published ? "Published" : "Draft"}
                   </Badge>
                 </div>
@@ -180,7 +180,7 @@ export default function BlogPage() {
           <Card>
             <CardContent className="text-center py-12">
               <p className="text-gray-500 mb-4">No blog posts created yet.</p>
-              <Button asChild>
+              <Button asChild className="bg-slate-700 hover:bg-slate-800 text-white">
                 <a href="/admin/blog/new">Create Your First Post</a>
               </Button>
             </CardContent>
