@@ -1,12 +1,35 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+// Extend Window interface for gtag
+declare global {
+  interface Window {
+    gtag: (
+      command: string,
+      targetId: string,
+      config?: Record<string, any>
+    ) => void;
+  }
+}
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 
 interface ContactFormProps {
@@ -16,11 +39,11 @@ interface ContactFormProps {
   className?: string;
 }
 
-export default function ContactForm({ 
-  title = "Get In Touch", 
+export default function ContactForm({
+  title = "Get In Touch",
   description = "Fill out the form below and we'll get back to you as soon as possible.",
   showContactInfo = true,
-  className = ""
+  className = "",
 }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: "",
@@ -28,26 +51,26 @@ export default function ContactForm({
     phone: "",
     service: "",
     message: "",
-    urgency: "normal"
+    urgency: "normal",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
-    
+
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -55,11 +78,20 @@ export default function ContactForm({
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        throw new Error(result.error || "Failed to send message");
+      }
+
+      // Track conversion with gtag
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag("event", "conversion", {
+          send_to: `${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}/ywWDCLmL9ZwbEL3pzKFB`,
+          value: 1.0,
+          currency: "USD",
+        });
       }
 
       setSubmitted(true);
-      
+
       // Reset form after 5 seconds
       setTimeout(() => {
         setSubmitted(false);
@@ -69,13 +101,16 @@ export default function ContactForm({
           phone: "",
           service: "",
           message: "",
-          urgency: "normal"
+          urgency: "normal",
         });
       }, 5000);
-
     } catch (error) {
-      console.error('Form submission error:', error);
-      setError(error instanceof Error ? error.message : 'Failed to send message. Please try again or call us directly.');
+      console.error("Form submission error:", error);
+      setError(
+        error instanceof Error
+          ? error.message
+          : "Failed to send message. Please try again or call us directly."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -91,9 +126,12 @@ export default function ContactForm({
                 <Send className="w-8 h-8 text-primary" />
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-foreground mb-2">Message Sent!</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-2">
+              Message Sent!
+            </h3>
             <p className="text-muted-foreground">
-              Thank you for contacting us. We'll get back to you within 24 hours.
+              Thank you for contacting us. We'll get back to you within 24
+              hours.
             </p>
           </CardContent>
         </Card>
@@ -110,9 +148,7 @@ export default function ContactForm({
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg">Contact Information</CardTitle>
-                <CardDescription>
-                  Get in touch with us directly
-                </CardDescription>
+                <CardDescription>Get in touch with us directly</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -121,19 +157,25 @@ export default function ContactForm({
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Phone</p>
-                    <a href="tel:4358903316" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href="tel:4358903316"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
                       (435) 890-3316
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <a href="mailto:ore.plumbing@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href="mailto:ore.plumbing@gmail.com"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
                       ore.plumbing@gmail.com
                     </a>
                   </div>
@@ -155,7 +197,9 @@ export default function ContactForm({
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Availability</p>
-                    <p className="text-muted-foreground">Mon - Sat | 7am - 6pm</p>
+                    <p className="text-muted-foreground">
+                      Mon - Sat | 7am - 6pm
+                    </p>
                   </div>
                 </div>
 
@@ -188,7 +232,10 @@ export default function ContactForm({
                         </h3>
                         <div className="mt-2 text-sm text-red-700">
                           <p>{error}</p>
-                          <p className="mt-1">Please try again or call us directly at (435) 890-3316</p>
+                          <p className="mt-1">
+                            Please try again or call us directly at (435)
+                            890-3316
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -202,7 +249,9 @@ export default function ContactForm({
                       id="name"
                       placeholder="Your full name"
                       value={formData.name}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange("name", e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        handleInputChange("name", e.target.value)
+                      }
                       required
                     />
                   </div>
@@ -213,7 +262,9 @@ export default function ContactForm({
                       type="email"
                       placeholder="your@email.com"
                       value={formData.email}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange("email", e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        handleInputChange("email", e.target.value)
+                      }
                       required
                     />
                   </div>
@@ -228,24 +279,47 @@ export default function ContactForm({
                       type="tel"
                       placeholder="(555) 123-4567"
                       value={formData.phone}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange("phone", e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        handleInputChange("phone", e.target.value)
+                      }
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="service">Service Needed</Label>
-                    <Select value={formData.service} onValueChange={(value: string) => handleInputChange("service", value)}>
+                    <Select
+                      value={formData.service}
+                      onValueChange={(value: string) =>
+                        handleInputChange("service", value)
+                      }
+                    >
                       <SelectTrigger>
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="emergency-repairs">Emergency Repairs</SelectItem>
-                        <SelectItem value="residential-new-install">New Residential Installation</SelectItem>
-                        <SelectItem value="commercial">Commercial Plumbing</SelectItem>
-                        <SelectItem value="bathroom-remodeling">Bathroom Remodeling</SelectItem>
-                        <SelectItem value="water-softeners">Water Softener Installation</SelectItem>
-                        <SelectItem value="water-heater">Water Heater Services</SelectItem>
-                        <SelectItem value="pipe-repair">Pipe Repair & Installation</SelectItem>
-                        <SelectItem value="drain-cleaning">Drain Cleaning</SelectItem>
+                        <SelectItem value="emergency-repairs">
+                          Emergency Repairs
+                        </SelectItem>
+                        <SelectItem value="residential-new-install">
+                          New Residential Installation
+                        </SelectItem>
+                        <SelectItem value="commercial">
+                          Commercial Plumbing
+                        </SelectItem>
+                        <SelectItem value="bathroom-remodeling">
+                          Bathroom Remodeling
+                        </SelectItem>
+                        <SelectItem value="water-softeners">
+                          Water Softener Installation
+                        </SelectItem>
+                        <SelectItem value="water-heater">
+                          Water Heater Services
+                        </SelectItem>
+                        <SelectItem value="pipe-repair">
+                          Pipe Repair & Installation
+                        </SelectItem>
+                        <SelectItem value="drain-cleaning">
+                          Drain Cleaning
+                        </SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
@@ -255,15 +329,28 @@ export default function ContactForm({
                 {/* Urgency */}
                 <div className="space-y-2">
                   <Label htmlFor="urgency">Urgency Level</Label>
-                  <Select value={formData.urgency} onValueChange={(value: string) => handleInputChange("urgency", value)}>
+                  <Select
+                    value={formData.urgency}
+                    onValueChange={(value: string) =>
+                      handleInputChange("urgency", value)
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="emergency">🚨 Emergency (Same Day)</SelectItem>
-                      <SelectItem value="urgent">⚡ Urgent (Within 24 hours)</SelectItem>
-                      <SelectItem value="normal">📅 Normal (Within a few days)</SelectItem>
-                      <SelectItem value="quote">💰 Just need a quote</SelectItem>
+                      <SelectItem value="emergency">
+                        🚨 Emergency (Same Day)
+                      </SelectItem>
+                      <SelectItem value="urgent">
+                        ⚡ Urgent (Within 24 hours)
+                      </SelectItem>
+                      <SelectItem value="normal">
+                        📅 Normal (Within a few days)
+                      </SelectItem>
+                      <SelectItem value="quote">
+                        💰 Just need a quote
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -276,7 +363,9 @@ export default function ContactForm({
                     placeholder="Please describe your plumbing needs..."
                     rows={4}
                     value={formData.message}
-                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleInputChange("message", e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                      handleInputChange("message", e.target.value)
+                    }
                     required
                   />
                 </div>
