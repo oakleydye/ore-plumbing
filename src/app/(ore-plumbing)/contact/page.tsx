@@ -24,6 +24,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { generateMetadata, getLocalSEOKeywords } from "@/components/seo/metadata";
 import ContactForm from "@/app/_components/contact-form";
+import TrackedLink from "@/components/tracked-link";
 
 export const metadata: Metadata = generateMetadata({
   title: "Contact O.R.E. Plumbing | Cache County Plumber | Logan, UT | (435) 890-3316",
@@ -149,12 +150,12 @@ export default function ContactPage() {
               us for fast, reliable service.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:4358903316">
+              <TrackedLink href="tel:4358903316" eventType="phone_click" source="contact_page_hero">
                 <Button size="lg" className="bg-primary">
                   <Phone className="w-4 h-4 mr-2" />
                   Call: (435) 890-3316
                 </Button>
-              </a>
+              </TrackedLink>
               <a href="#contact-form">
                 <Button size="lg" variant="outline">
                   <Calendar className="w-4 h-4 mr-2" />
@@ -229,15 +230,13 @@ export default function ContactPage() {
                     asChild
                   >
                     {method.method === "Email" ? (
-                      <a href={`mailto:${method.primary}`}>Send Email</a>
+                      <TrackedLink href={`mailto:${method.primary}`} eventType="email_click" source="contact_page_methods">Send Email</TrackedLink>
                     ) : method.method === "Text Message" ? (
                       <a href={`sms:${method.primary.replace(/[^\d]/g, "")}`}>
                         Send Text
                       </a>
                     ) : (
-                      <a href={`tel:${method.primary.replace(/[^\d]/g, "")}`}>
-                        Call Now
-                      </a>
+                      <TrackedLink href={`tel:${method.primary.replace(/[^\d]/g, "")}`} eventType="phone_click" source="contact_page_methods">Call Now</TrackedLink>
                     )}
                   </Button>
                 </CardContent>
@@ -423,7 +422,7 @@ export default function ContactPage() {
             Northern Utah.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:4358903316">
+            <TrackedLink href="tel:4358903316" eventType="phone_click" source="contact_page_cta">
               <Button
                 size="lg"
                 variant="secondary"
@@ -432,7 +431,7 @@ export default function ContactPage() {
                 <Phone className="w-4 h-4 mr-2" />
                 Call (435) 890-3316
               </Button>
-            </a>
+            </TrackedLink>
             <Link href="/services">
               <Button
                 size="lg"

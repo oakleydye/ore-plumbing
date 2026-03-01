@@ -1,6 +1,9 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import TrackedLink from "@/components/tracked-link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,7 +21,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-2">
               <Button size="sm" variant="outline" asChild>
-                <a href="tel:4358903316">Call Now</a>
+                <TrackedLink href="tel:4358903316" eventType="phone_click" source="footer_call_now">Call Now</TrackedLink>
               </Button>
               <Button size="sm" asChild>
                 <a href="/contact">Get Quote</a>
@@ -45,15 +48,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary" />
-                <a href="tel:4358903316" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <TrackedLink href="tel:4358903316" eventType="phone_click" source="footer_contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   (435) 890-3316
-                </a>
+                </TrackedLink>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:ore.plumbing@gmail.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <TrackedLink href="mailto:ore.plumbing@gmail.com" eventType="email_click" source="footer_contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   ore.plumbing@gmail.com
-                </a>
+                </TrackedLink>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-primary" />

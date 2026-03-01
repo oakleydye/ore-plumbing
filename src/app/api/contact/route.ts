@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { generateContactEmail } from '@/lib/email-template';
 import { db } from '@/lib/db';
+import { trackEventFromRequest } from '@/lib/analytics';
 import type { ContactFormData, ContactFormResponse } from '@/types/contact';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -50,6 +51,13 @@ export async function POST(request: NextRequest): Promise<NextResponse<ContactFo
         }
       });
       dbSaveSuccessful = true;
+
+      // Track contact form submission
+      await trackEventFromRequest(request, 'contact_form_submitted', 'contact_form', {
+        service: service || null,
+        urgency,
+        contactRequestId: contactRequest.id,
+      });
     } catch (dbError) {
       console.error('Database save failed, but continuing with email:', dbError);
       // Continue to email sending - we don't want to lose business

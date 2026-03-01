@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
+import TrackedLink from "@/components/tracked-link";
 
 const images = ["/images/hero1.webp", "/images/hero2.webp", "/images/hero3.webp"];
 
@@ -60,12 +61,14 @@ export default function Hero() {
           Request a Free Estimate
         </Button>
         {/* Optional: Add a phone CTA below button */}
-        <a
+        <TrackedLink
           href="tel:4358903316"
+          eventType="phone_click"
+          source="hero"
           className="mt-6 text-accent-background hover:text-accent underline text-base transition-colors"
         >
           Or call us now: (435) 890-3316
-        </a>
+        </TrackedLink>
       </div>
 
       {/* Decorative bubbles */}

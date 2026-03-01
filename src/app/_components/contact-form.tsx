@@ -31,6 +31,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import TrackedLink from "@/components/tracked-link";
 
 interface ContactFormProps {
   title?: string;
@@ -157,12 +158,14 @@ export default function ContactForm({
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Phone</p>
-                    <a
+                    <TrackedLink
                       href="tel:4358903316"
+                      eventType="phone_click"
+                      source="contact_form_sidebar"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
                       (435) 890-3316
-                    </a>
+                    </TrackedLink>
                   </div>
                 </div>
 
@@ -172,12 +175,14 @@ export default function ContactForm({
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <a
+                    <TrackedLink
                       href="mailto:ore.plumbing@gmail.com"
+                      eventType="email_click"
+                      source="contact_form_sidebar"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
                       ore.plumbing@gmail.com
-                    </a>
+                    </TrackedLink>
                   </div>
                 </div>
 
@@ -205,7 +210,7 @@ export default function ContactForm({
 
                 <div className="pt-4">
                   <Button className="w-full" asChild>
-                    <a href="tel:4358903316">Call for Service</a>
+                    <TrackedLink href="tel:4358903316" eventType="phone_click" source="contact_form_cta">Call for Service</TrackedLink>
                   </Button>
                 </div>
               </CardContent>
