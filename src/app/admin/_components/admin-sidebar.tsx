@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 
 const navigation = [
   { name: 'Dashboard', href: '/admin', icon: '📊' },
+  { name: 'Analytics', href: '/admin/analytics', icon: '📈' },
   { name: 'Contact Requests', href: '/admin/contact-requests', icon: '💬' },
   { name: 'Job Photos', href: '/admin/job-photos', icon: '📷' },
   { name: 'Blog Posts', href: '/admin/blog', icon: '📝' },
