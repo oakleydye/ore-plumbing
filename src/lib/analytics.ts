@@ -4,6 +4,7 @@ import { Prisma } from '@prisma/client';
 export type EventType =
   | 'phone_click'
   | 'email_click'
+  | 'sms_click'
   | 'contact_form_submitted';
 
 interface TrackEventOptions {

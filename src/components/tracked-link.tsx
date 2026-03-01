@@ -3,7 +3,7 @@
 import { AnchorHTMLAttributes, forwardRef } from "react";
 
 interface TrackedLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  eventType: "phone_click" | "email_click";
+  eventType: "phone_click" | "email_click" | "sms_click";
   source?: string;
 }
 

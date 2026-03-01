@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { trackEventFromRequest, EventType } from '@/lib/analytics';
 
-const VALID_EVENTS: EventType[] = ['phone_click', 'email_click', 'contact_form_submitted'];
+const VALID_EVENTS: EventType[] = ['phone_click', 'email_click', 'sms_click', 'contact_form_submitted'];
 
 export async function POST(request: NextRequest) {
   try {

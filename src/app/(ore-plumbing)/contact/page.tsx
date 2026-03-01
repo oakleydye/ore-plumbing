@@ -232,9 +232,9 @@ export default function ContactPage() {
                     {method.method === "Email" ? (
                       <TrackedLink href={`mailto:${method.primary}`} eventType="email_click" source="contact_page_methods">Send Email</TrackedLink>
                     ) : method.method === "Text Message" ? (
-                      <a href={`sms:${method.primary.replace(/[^\d]/g, "")}`}>
+                      <TrackedLink href={`sms:${method.primary.replace(/[^\d]/g, "")}`} eventType="sms_click" source="contact_page_methods">
                         Send Text
-                      </a>
+                      </TrackedLink>
                     ) : (
                       <TrackedLink href={`tel:${method.primary.replace(/[^\d]/g, "")}`} eventType="phone_click" source="contact_page_methods">Call Now</TrackedLink>
                     )}
