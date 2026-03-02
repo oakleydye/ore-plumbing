@@ -46,6 +46,8 @@ export default function ContactForm({
   showContactInfo = true,
   className = "",
 }: ContactFormProps) {
+  const [honeypot, setHoneypot] = useState("");
+  const [formStartTime] = useState(() => Date.now());
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -73,7 +75,7 @@ export default function ContactForm({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, _hp: honeypot, _t: formStartTime }),
       });
 
       const result = await response.json();
@@ -227,6 +229,19 @@ export default function ContactForm({
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot field — hidden from real users, bots fill it in */}
+                <div style={{ position: "absolute", left: "-9999px", top: "-9999px", opacity: 0 }} aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
                 {/* Error Message */}
                 {error && (
                   <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
