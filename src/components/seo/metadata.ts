@@ -78,7 +78,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
       },
     },
     verification: {
-      google: process.env.GOOGLE_SITE_VERIFICATION,
+      google: process.env.GOOGLE_SITE_VERIFICATION_CODE,
     },
   };
 }
