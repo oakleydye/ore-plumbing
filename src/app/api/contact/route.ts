@@ -10,7 +10,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const SPAM_KEYWORDS = [
   "casino", "viagra", "cialis", "crypto", "bitcoin", "nft", "seo service",
-  "buy followers", "make money fast", "work from home", "click here", "limited offer",
+  "buy followers", "make money fast", "work from home", "click here", "limited offer", "search terms", "search results", "keywords"
 ];
 
 function isSpam(name: string, email: string, message: string): boolean {
