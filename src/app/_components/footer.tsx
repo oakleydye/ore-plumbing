@@ -83,8 +83,9 @@ export default function Footer() {
               <li><a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a></li>
               <li><a href="/gallery" className="text-muted-foreground hover:text-primary transition-colors">Project Gallery</a></li>
               <li><a href="/blog" className="text-muted-foreground hover:text-primary transition-colors">Blog</a></li>
+              <li><a href="/logan-utah-plumber" className="text-muted-foreground hover:text-primary transition-colors">Plumber in Logan, UT</a></li>
+              <li><a href="/north-logan-utah-plumber" className="text-muted-foreground hover:text-primary transition-colors">Plumber in North Logan, UT</a></li>
               {/* <li><a href="/services/emergency-repairs" className="text-muted-foreground hover:text-primary transition-colors">Emergency Service</a></li> */}
-              <li><a href="/reviews" className="text-muted-foreground hover:text-primary transition-colors">Customer Reviews</a></li>
             </ul>
           </div>
         </div>
