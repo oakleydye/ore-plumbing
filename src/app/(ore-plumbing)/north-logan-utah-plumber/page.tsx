@@ -22,12 +22,12 @@ export const metadata: Metadata = generateMetadata({
   title: "North Logan Utah Plumber | O.R.E. Plumbing | Emergency Plumbing Services",
   description: "Expert plumber in North Logan, Utah. 24/7 emergency plumbing services, drain cleaning, water heater repair, pipe repair & more. Licensed, insured & locally owned. Serving North Logan & Cache County.",
   keywords: `${getLocalSEOKeywords("plumber", "North Logan")}, North Logan Utah plumber, plumbing services North Logan UT, emergency plumber North Logan`,
-  canonical: "https://oreplumbing.com/north-logan-utah-plumber",
+  canonical: "https://www.oreplumbing.com/north-logan-utah-plumber",
   openGraph: {
     title: "North Logan Utah's Trusted Plumber | O.R.E. Plumbing",
     description: "Professional plumbing services in North Logan, Utah. Emergency repairs, drain cleaning, water heater installation & more.",
     type: "website",
-    url: "https://oreplumbing.com/north-logan-utah-plumber",
+    url: "https://www.oreplumbing.com/north-logan-utah-plumber",
   },
 });
 
@@ -50,7 +50,7 @@ export default function NorthLoganPlumberPage() {
       <ServicePageSchema
         serviceName="Plumbing Services North Logan Utah"
         serviceDescription="Professional plumbing services in North Logan, Utah including emergency repairs, drain cleaning, water heater services, and pipe repair."
-        serviceUrl="https://oreplumbing.com/north-logan-utah-plumber"
+        serviceUrl="https://www.oreplumbing.com/north-logan-utah-plumber"
         areaServed="North Logan, Utah"
       />
 

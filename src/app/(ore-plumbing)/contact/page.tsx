@@ -30,12 +30,12 @@ export const metadata: Metadata = generateMetadata({
   title: "Contact O.R.E. Plumbing | Cache County Plumber | Logan, UT | (435) 890-3316",
   description: "Contact Cache County's trusted plumber. Free estimates, 24/7 emergency service in Logan, North Logan, Hyde Park, Smithfield & surrounding areas. Licensed & insured. Call (435) 890-3316.",
   keywords: `${getLocalSEOKeywords("contact plumber")}, Cache County plumber contact, Logan Utah plumber phone, emergency plumber Cache County`,
-  canonical: "https://oreplumbing.com/contact",
+  canonical: "https://www.oreplumbing.com/contact",
   openGraph: {
     title: "Contact O.R.E. Plumbing | Cache County's Premier Plumbing Service",
     description: "Get in touch with Cache County's most trusted plumbing company. Free estimates and 24/7 emergency service available.",
     type: "website",
-    url: "https://oreplumbing.com/contact",
+    url: "https://www.oreplumbing.com/contact",
   },
 });
 

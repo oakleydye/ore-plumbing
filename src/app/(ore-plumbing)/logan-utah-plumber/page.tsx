@@ -22,12 +22,12 @@ export const metadata: Metadata = generateMetadata({
   title: "Logan Utah Plumber | O.R.E. Plumbing | Emergency Plumbing Services Logan, UT",
   description: "Expert plumber in Logan, Utah. 24/7 emergency plumbing services, drain cleaning, water heater repair, pipe repair & more. Licensed, insured & locally owned. Serving Logan & Cache County.",
   keywords: `${getLocalSEOKeywords("plumber", "Logan")}, Logan Utah plumber, plumbing services Logan UT, emergency plumber Logan`,
-  canonical: "https://oreplumbing.com/logan-utah-plumber",
+  canonical: "https://www.oreplumbing.com/logan-utah-plumber",
   openGraph: {
     title: "Logan Utah's #1 Rated Plumber | O.R.E. Plumbing",
     description: "Professional plumbing services in Logan, Utah. Emergency repairs, drain cleaning, water heater installation & more. Licensed & insured.",
     type: "website",
-    url: "https://oreplumbing.com/logan-utah-plumber",
+    url: "https://www.oreplumbing.com/logan-utah-plumber",
   },
 });
 
@@ -113,7 +113,7 @@ export default function LoganPlumberPage() {
       <ServicePageSchema
         serviceName="Plumbing Services Logan Utah"
         serviceDescription="Professional plumbing services in Logan, Utah including emergency repairs, drain cleaning, water heater services, and pipe repair."
-        serviceUrl="https://oreplumbing.com/logan-utah-plumber"
+        serviceUrl="https://www.oreplumbing.com/logan-utah-plumber"
         areaServed="Logan, Utah"
       />
 

@@ -25,12 +25,12 @@ export const metadata: Metadata = generateMetadata({
   title: "About O.R.E. Plumbing | Cache County's Trusted Plumbers | Logan, UT",
   description: "Learn about O.R.E. Plumbing, Cache County's premier plumbing company. Licensed, insured & locally owned. Serving Logan, North Logan, Hyde Park, Smithfield & surrounding Utah communities with integrity and excellence.",
   keywords: getLocalSEOKeywords("plumbing company"),
-  canonical: "https://oreplumbing.com/about",
+  canonical: "https://www.oreplumbing.com/about",
   openGraph: {
     title: "About O.R.E. Plumbing | Cache County's Premier Plumbing Company",
     description: "Locally owned and operated plumbing company serving Cache County, Utah with integrity, excellence, and reliable service.",
     type: "website",
-    url: "https://oreplumbing.com/about",
+    url: "https://www.oreplumbing.com/about",
   },
 });
 
