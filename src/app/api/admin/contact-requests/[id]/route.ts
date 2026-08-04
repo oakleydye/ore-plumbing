@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { db } from '@/lib/db';
 import { generateResponseEmail } from '@/lib/email-template';
+import { requireAdmin } from '@/lib/api-auth';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -9,6 +10,9 @@ export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const auth = await requireAdmin(request);
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const { id } = await params;
     const body = await request.json();
@@ -93,6 +97,9 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const auth = await requireAdmin(request);
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const { id } = await params;
     await db.contactRequest.delete({
