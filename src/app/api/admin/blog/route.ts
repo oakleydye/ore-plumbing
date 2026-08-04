@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { revalidateBlogCache } from '@/lib/blog';
+import { requireAdmin } from '@/lib/api-auth';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const auth = await requireAdmin(request, { allowServiceToken: true });
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const posts = await db.blogPost.findMany({
       orderBy: { createdAt: 'desc' }
@@ -19,6 +23,9 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
+  const auth = await requireAdmin(request, { allowServiceToken: true });
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const body = await request.json();
     const {

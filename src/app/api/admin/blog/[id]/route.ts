@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { revalidateBlogCache } from '@/lib/blog';
+import { requireAdmin } from '@/lib/api-auth';
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const auth = await requireAdmin(request, { allowServiceToken: true });
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const { id } = await params;
     const post = await db.blogPost.findUnique({
@@ -33,6 +37,9 @@ export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const auth = await requireAdmin(request, { allowServiceToken: true });
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const { id } = await params;
     const body = await request.json();
@@ -62,6 +69,10 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  // Deliberately no service token: the agent may draft and publish, never delete.
+  const auth = await requireAdmin(request);
+  if (auth instanceof NextResponse) return auth;
+
   try {
     const { id } = await params;
     await db.blogPost.delete({
