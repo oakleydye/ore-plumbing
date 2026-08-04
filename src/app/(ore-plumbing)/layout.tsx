@@ -32,7 +32,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <LocalBusinessSchema />
-        <link rel="canonical" href="https://oreplumbing.com" />
         <meta name="geo.region" content="US-UT" />
         <meta name="geo.placename" content="Cache County" />
         <meta name="geo.position" content="41.7370;-111.8338" />
