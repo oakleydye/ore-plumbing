@@ -11,8 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'water-softeners',
     'water-heater',
     'pipe-repair',
-    'drain-cleaning',
-    '_emergency-repairs'
+    'drain-cleaning'
   ]
 
   const staticPages = [
