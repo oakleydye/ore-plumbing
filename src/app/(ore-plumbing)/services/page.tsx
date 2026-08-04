@@ -21,12 +21,12 @@ export const metadata: Metadata = generateMetadata({
   title: "Plumbing Services Cache County | O.R.E. Plumbing Logan, UT | Emergency & Residential",
   description: "Complete plumbing services in Cache County, Utah. Emergency repairs, drain cleaning, water heater installation, pipe repair, bathroom remodeling & commercial plumbing. Licensed plumbers serving Logan, North Logan, Hyde Park, Smithfield & surrounding areas.",
   keywords: getLocalSEOKeywords("plumbing services"),
-  canonical: "https://oreplumbing.com/services",
+  canonical: "https://www.oreplumbing.com/services",
   openGraph: {
     title: "Complete Plumbing Services | Cache County, Utah | O.R.E. Plumbing",
     description: "Professional plumbing services including emergency repairs, drain cleaning, water heater installation, and more. Serving Cache County communities.",
     type: "website",
-    url: "https://oreplumbing.com/services",
+    url: "https://www.oreplumbing.com/services",
   },
 });
 
