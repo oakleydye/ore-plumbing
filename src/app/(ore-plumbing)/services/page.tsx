@@ -18,8 +18,8 @@ import { Metadata } from "next";
 import { generateMetadata, getLocalSEOKeywords } from "@/components/seo/metadata";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Plumbing Services Cache County | O.R.E. Plumbing Logan, UT | Emergency & Residential",
-  description: "Complete plumbing services in Cache County, Utah. Emergency repairs, drain cleaning, water heater installation, pipe repair, bathroom remodeling & commercial plumbing. Licensed plumbers serving Logan, North Logan, Hyde Park, Smithfield & surrounding areas.",
+  title: "Plumbing Services in Cache County, UT | O.R.E. Plumbing",
+  description: "Licensed Cache County plumbers. Emergency repairs, drain cleaning, water heater installation, pipe repair, bathroom remodeling and commercial plumbing.",
   keywords: getLocalSEOKeywords("plumbing services"),
   canonical: "https://www.oreplumbing.com/services",
   openGraph: {
