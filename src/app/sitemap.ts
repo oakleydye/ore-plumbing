@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about',
     '/services',
     '/contact',
+    '/gallery',
+    '/blog',
     '/privacy',
     '/terms',
     '/logan-utah-plumber',
