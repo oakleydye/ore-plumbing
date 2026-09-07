@@ -22,7 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/privacy',
     '/terms',
     '/logan-utah-plumber',
-    '/north-logan-utah-plumber'
+    '/north-logan-utah-plumber',
+    '/gallery',
+    '/blog'
   ]
 
   const serviceUrls = servicePages.map(service => ({
