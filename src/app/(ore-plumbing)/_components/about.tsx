@@ -13,6 +13,7 @@ export default function About() {
               src="/logo.webp"
               alt="Professional plumber working"
               fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
             />
           </div>
